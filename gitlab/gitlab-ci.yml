@@ -1,0 +1,51 @@
+stages:
+  - test
+
+.unit:
+  stage: test
+  cache:
+    key: $CI_JOB_NAME
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  services:
+    - name: amazon/dynamodb-local
+      alias: dynamodb-local-1
+    - name: amazon/dynamodb-local
+      alias: dynamodb-local-2
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - export GRADLE_OPTS='-Dorg.gradle.daemon=false'
+    - source gitlab/test.env
+  script:
+    - &unit ./gradlew test jacocoTestReport --stacktrace
+  artifacts:
+    name: $CI_COMMIT_SHA-$CI_JOB_NAME
+    when: always
+    expire_in: 1 day
+    paths:
+      - dynamodb/v1/build/reports/
+      - dynamodb/v1/build/test-results/
+      - dynamodb/v1/build/jacoco/
+    reports:
+      junit:
+        - dynamodb/v1/build/test-results/test/TEST-*.xml
+
+unit@openjdk:8:
+  extends: .unit
+  image: openjdk:8
+  script:
+    - *unit
+    - bash <(curl -s https://codecov.io/bash)
+
+unit@openjdk:10:
+  extends: .unit
+  image: openjdk:10
+
+unit@openjdk:11:
+  extends: .unit
+  image: openjdk:11
+
+unit@openjdk:12:
+  extends: .unit
+  image: openjdk:12
