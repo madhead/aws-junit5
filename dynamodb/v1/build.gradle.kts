@@ -1,5 +1,10 @@
 import com.jfrog.bintray.gradle.BintrayExtension
 
+plugins {
+    `maven-publish`
+    id("com.jfrog.bintray").version("1.8.4")
+}
+
 dependencies {
     api("com.amazonaws:aws-java-sdk-dynamodb")
 }
@@ -19,6 +24,8 @@ publishing {
 }
 
 bintray {
+    user = System.getenv("BINTRAY_USER")
+    key = System.getenv("BINTRAY_KEY")
     publish = true
     setPublications("main")
     pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
