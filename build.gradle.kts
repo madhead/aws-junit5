@@ -1,15 +1,20 @@
+import com.jfrog.bintray.gradle.BintrayExtension
+import com.jfrog.bintray.gradle.BintrayPlugin
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
 
 plugins {
     id("io.spring.dependency-management").version("1.0.6.RELEASE").apply(false)
+    id("com.jfrog.bintray").version("1.8.4").apply(false)
 }
 
 subprojects {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()
     apply<JacocoPlugin>()
+    apply<MavenPublishPlugin>()
+    apply<BintrayPlugin>()
 
     repositories {
         jcenter()
@@ -37,6 +42,11 @@ subprojects {
 
     configure<JacocoPluginExtension> {
         toolVersion = "0.8.2"
+    }
+
+    configure<BintrayExtension> {
+        user = System.getenv("BINTRAY_USER")
+        key = System.getenv("BINTRAY_KEY")
     }
 
     tasks {
