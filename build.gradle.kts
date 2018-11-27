@@ -26,13 +26,13 @@ subprojects {
     dependencies {
         val api by configurations
         val testImplementation by configurations
-        val testRuntime by configurations
+        val testRuntimeOnly by configurations
 
         api("org.junit.jupiter:junit-jupiter-api")
 
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testImplementation("org.junit.jupiter:junit-jupiter-params")
-        testRuntime("org.junit.jupiter:junit-jupiter-engine")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 
     configure<JacocoPluginExtension> {
@@ -60,8 +60,8 @@ subprojects {
 }
 
 tasks {
-    val wrapper by creating(Wrapper::class) {
-        gradleVersion = "4.10.2"
+    wrapper {
+        gradleVersion = "5.2.1"
         distributionType = Wrapper.DistributionType.ALL
     }
 }

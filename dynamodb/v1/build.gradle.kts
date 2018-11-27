@@ -14,8 +14,17 @@ publishing {
         val main by creating(MavenPublication::class) {
             from(components["java"])
 
-            val sourcesJar by tasks
-            val javadocJar by tasks
+            val sourcesJar by tasks.creating(Jar::class) {
+                from(sourceSets["main"].allJava)
+                archiveClassifier.set("sources")
+            }
+
+            val javadocJar by tasks.creating(Jar::class) {
+                val javadoc by tasks
+
+                from(javadoc)
+                archiveClassifier.set("javadoc")
+            }
 
             artifact(sourcesJar)
             artifact(javadocJar)
@@ -37,18 +46,4 @@ bintray {
             name = project.version.toString()
         })
     })
-}
-
-tasks {
-    val sourcesJar by creating(Jar::class) {
-        from(sourceSets["main"].allJava)
-        classifier = "sources"
-    }
-
-    val javadocJar by creating(Jar::class) {
-        val javadoc by tasks
-
-        from(javadoc)
-        classifier = "javadoc"
-    }
 }
