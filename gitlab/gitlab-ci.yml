@@ -69,3 +69,4 @@ bintray:
     - ./gradlew bintrayUpload
   only:
     - master
+  dependencies: []
