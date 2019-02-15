@@ -51,6 +51,17 @@ unit@openjdk:12:
   extends: .unit
   image: openjdk:12
 
+gradle-version:
+  stage: test
+  image: openjdk:8
+  script:
+    - gradle_version=$(./gradlew --version | sed -rn 's/^Gradle (.+)$/\1/p')
+    - latest_gradle_version=$(curl https://services.gradle.org/versions/current | python2 -c 'import json,sys;print json.load(sys.stdin)["version"]')
+    - echo $gradle_version
+    - echo $latest_gradle_version
+    - '[[ $gradle_version == $latest_gradle_version ]]'
+  allow_failure: true
+
 bintray:
   stage: publish
   image: openjdk:8
