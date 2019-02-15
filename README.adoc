@@ -1,0 +1,25 @@
+= aws-junit5
+
+JUnit 5 extensions for AWS
+
+== What is this repo?
+
+This repo contains some JUnit 5 utilities (mostly, https://junit.org/junit5/docs/current/user-guide/#extensions[extensions]) that you can find useful when writing tests for AWS-related stuff.
+
+Currently it includes:
+
+. https://aws.amazon.com/about-aws/whats-new/2018/08/use-amazon-dynamodb-local-more-easily-with-the-new-docker-image/[DynamoDB Local] link:./docs/dynamodb.adoc[helpers].
+
+Feel free to propose new features via https://gitlab.com/madhead/aws-junit5/issues/new[issues] or https://gitlab.com/madhead/aws-junit5/merge_requests/new[merge (pull) requests]!
+
+== How do I add it in my build?
+
+TODO
+
+== Gradle
+
+TODO
+
+== Maven
+
+TODO
