@@ -61,7 +61,7 @@ subprojects {
 
 tasks {
     val wrapper by creating(Wrapper::class) {
-        gradleVersion = "4.10.2"
+        gradleVersion = "5.2.1"
         distributionType = Wrapper.DistributionType.ALL
     }
 }
