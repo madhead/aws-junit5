@@ -74,6 +74,17 @@ gradle-version:
     - '[[ $gradle_version == $latest_gradle_version ]]'
   allow_failure: true
 
+copyright:
+  stage: test
+  image: bash:latest
+  script:
+    - copyright_year=$(sed -n 's/Copyright (c) \([[:digit:]]\{4\}\) madhead <siarhei.krukau@gmail.com>/\1/p' LICENSE)
+    - current_year=$(date +%Y)
+    - echo $copyright_year
+    - echo $current_year
+    - '[[ $copyright_year == $current_year ]]'
+  allow_failure: true
+
 bintray:
   stage: publish
   image: openjdk:8
