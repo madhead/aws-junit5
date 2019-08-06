@@ -6,7 +6,7 @@ import com.amazonaws.regions.Regions;
 class FactoryTestServiceConfiguration implements ServiceConfiguration {
     @Override
     public String url() {
-        return "http://localhost:8000";
+        return "http://localstack:4569";
     }
 
     @Override

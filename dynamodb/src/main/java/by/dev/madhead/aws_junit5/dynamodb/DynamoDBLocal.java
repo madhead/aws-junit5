@@ -1,4 +1,4 @@
-package by.dev.madhead.aws_junit5.dynamodb.v1;
+package by.dev.madhead.aws_junit5.dynamodb;
 
 import by.dev.madhead.aws_junit5.common.ServiceConfiguration;
 

@@ -1,11 +1,12 @@
 package by.dev.madhead.aws_junit5.dynamodb.v1;
 
+import by.dev.madhead.aws_junit5.dynamodb.DynamoDBLocal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class NotEligibleFieldInjectionTest {
-    @DynamoDBLocal(serviceConfiguration = InjectionsTestSystemPropertiesServiceConfigurationInstance1.class)
+    @DynamoDBLocal(serviceConfiguration = SystemPropertiesDynamoDBServiceConfiguration.class)
     private String amazonDynamoDB;
 
     @Test

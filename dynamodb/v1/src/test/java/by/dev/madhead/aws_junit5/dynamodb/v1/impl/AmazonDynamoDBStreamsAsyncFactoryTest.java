@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class AmazonDynamoDBStreamsAsyncFactoryTest {
-    private final AmazonDynamoDBStreamsAsyncFactory amazonDynamoDBStreamsAsyncFactory = new AmazonDynamoDBStreamsAsyncFactory();
+    private final AmazonDynamoDBStreamsAsyncFactory amazonDynamoDBStreamsAsyncFactory =
+        new AmazonDynamoDBStreamsAsyncFactory();
 
     @Test
     @DisplayName("AmazonDynamoDBStreamsAsyncFactory should create instances of AmazonDynamoDBStreamsAsync")
