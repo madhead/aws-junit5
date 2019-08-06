@@ -1,5 +1,6 @@
 rootProject.name = "aws-junit5"
 
+include(":common")
 include(":dynamodb:v1")
 include(":dynamodb:v2")
 

@@ -1,5 +1,9 @@
-by.dev.madhead.aws_junit5.null=
-by.dev.madhead.aws_junit5.empty=
-
 by.dev.madhead.aws_junit5.dynamodb.v1.url1=http://dynamodb-local-1:8000
+by.dev.madhead.aws_junit5.dynamodb.v1.region1=us-east-2
+by.dev.madhead.aws_junit5.dynamodb.v1.accessKey1=accessKey
+by.dev.madhead.aws_junit5.dynamodb.v1.secretKey1=secretKey
+
 by.dev.madhead.aws_junit5.dynamodb.v1.url2=http://dynamodb-local-2:8000
+by.dev.madhead.aws_junit5.dynamodb.v1.region2=us-east-2
+by.dev.madhead.aws_junit5.dynamodb.v1.accessKey2=accessKey
+by.dev.madhead.aws_junit5.dynamodb.v1.secretKey2=secretKey
