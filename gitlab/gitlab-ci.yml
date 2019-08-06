@@ -18,6 +18,14 @@ stages:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - export GRADLE_OPTS='-Dorg.gradle.daemon=false'
     - source gitlab/test.env
+
+    - yum -y install unzip || true
+
+    - curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o /tmp/awscli-bundle.zip
+    - unzip /tmp/awscli-bundle.zip -d /tmp/awscli-bundle
+    - /tmp/awscli-bundle/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+    - dynamodb/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace
   artifacts:

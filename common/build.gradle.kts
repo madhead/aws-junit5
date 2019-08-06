@@ -6,8 +6,6 @@ plugins {
 }
 
 dependencies {
-    api("com.amazonaws:aws-java-sdk-dynamodb")
-    api(project(":common"))
 }
 
 publishing {

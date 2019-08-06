@@ -1,0 +1,11 @@
+{
+    "TableName": "table_1",
+    "Item": {
+        "id": {
+            "S": "unit-test-table_1-002"
+        },
+        "data": {
+            "S": "unit-test-table_1-002"
+        }
+    }
+}
