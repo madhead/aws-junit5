@@ -3,7 +3,13 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
 
 plugins {
+    id("com.gradle.build-scan").version("2.3")
     id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
 }
 
 configure(
@@ -21,8 +27,22 @@ configure(
     configure<DependencyManagementExtension> {
         imports {
             mavenBom("org.junit:junit-bom:5.5.1")
-            mavenBom("com.amazonaws:aws-java-sdk-bom:1.11.79")
-            mavenBom("software.amazon.awssdk:bom:2.0.0")
+
+            // By default, the code is compiled against the lowest supported AWS SDK versions.
+            // If BY_DEV_MADHEAD_AWS_JUNIT5_USE_LATEST_AWS_SDK environment variable is set to true we want to test the
+            // code against the latest available AWS SDK versions.
+            val v1: String
+            val v2: String
+
+            if (System.getenv("BY_DEV_MADHEAD_AWS_JUNIT5_USE_LATEST_AWS_SDK") == "true") {
+                v1 = "1.+"
+                v2 = "2.+"
+            } else {
+                v1 = "1.11.79"
+                v2 = "2.0.0"
+            }
+            mavenBom("com.amazonaws:aws-java-sdk-bom:$v1")
+            mavenBom("software.amazon.awssdk:bom:$v2")
         }
     }
 
