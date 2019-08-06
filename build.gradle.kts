@@ -3,10 +3,13 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
 
 plugins {
-    id("io.spring.dependency-management").version("1.0.6.RELEASE").apply(false)
+    id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
 }
 
-subprojects {
+configure(
+    subprojects
+        - project("dynamodb")
+) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()
     apply<JacocoPlugin>()
@@ -17,7 +20,7 @@ subprojects {
 
     configure<DependencyManagementExtension> {
         imports {
-            mavenBom("org.junit:junit-bom:5.2.0")
+            mavenBom("org.junit:junit-bom:5.5.1")
             mavenBom("com.amazonaws:aws-java-sdk-bom:1.11.79")
             mavenBom("software.amazon.awssdk:bom:2.0.0")
         }
