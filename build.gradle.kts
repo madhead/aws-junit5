@@ -36,7 +36,7 @@ subprojects {
     }
 
     configure<JacocoPluginExtension> {
-        toolVersion = "0.8.2"
+        toolVersion = "0.8.4"
     }
 
     tasks {
