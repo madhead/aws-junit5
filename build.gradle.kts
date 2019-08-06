@@ -1,3 +1,5 @@
+import com.jfrog.bintray.gradle.BintrayExtension
+import com.jfrog.bintray.gradle.BintrayPlugin
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
@@ -5,6 +7,7 @@ import java.util.Properties
 plugins {
     id("com.gradle.build-scan").version("2.3")
     id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
+    id("com.jfrog.bintray").version("1.8.4").apply(false)
 }
 
 buildScan {
@@ -19,6 +22,8 @@ configure(
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()
     apply<JacocoPlugin>()
+    apply<MavenPublishPlugin>()
+    apply<BintrayPlugin>()
 
     repositories {
         jcenter()
@@ -56,6 +61,47 @@ configure(
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testImplementation("org.junit.jupiter:junit-jupiter-params")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    }
+
+    configure<PublishingExtension> {
+        publications {
+            val main by creating(MavenPublication::class) {
+                from(components["java"])
+
+                val sourcesJar by tasks.creating(Jar::class) {
+                    val sourceSets: SourceSetContainer by project
+
+                    from(sourceSets["main"].allJava)
+                    archiveClassifier.set("sources")
+                }
+
+                val javadocJar by tasks.creating(Jar::class) {
+                    val javadoc by tasks
+
+                    from(javadoc)
+                    archiveClassifier.set("javadoc")
+                }
+
+                artifact(sourcesJar)
+                artifact(javadocJar)
+            }
+        }
+    }
+
+    configure<BintrayExtension> {
+        user = System.getenv("BINTRAY_USER")
+        key = System.getenv("BINTRAY_KEY")
+        publish = true
+        setPublications("main")
+        pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
+            repo = "maven"
+            name = "${project.group}:${project.name}"
+            setLicenses("LGPL-3.0")
+            vcsUrl = "https://gitlab.com/madhead/aws-junit5"
+            version(delegateClosureOf<BintrayExtension.VersionConfig> {
+                name = project.version.toString()
+            })
+        })
     }
 
     configure<JacocoPluginExtension> {
