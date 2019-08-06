@@ -58,10 +58,3 @@ subprojects {
         }
     }
 }
-
-tasks {
-    wrapper {
-        gradleVersion = "5.2.1"
-        distributionType = Wrapper.DistributionType.ALL
-    }
-}
