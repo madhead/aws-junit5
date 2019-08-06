@@ -21,6 +21,9 @@ public class DynamoDBLocalExtension implements TestInstancePostProcessor {
     static {
         factories = new HashMap<>();
         factories.put(AmazonDynamoDB.class, new AmazonDynamoDBFactory());
+        factories.put(AmazonDynamoDBAsync.class, new AmazonDynamoDBAsyncFactory());
+        factories.put(AmazonDynamoDBStreams.class, new AmazonDynamoDBStreamsFactory());
+        factories.put(AmazonDynamoDBStreamsAsync.class, new AmazonDynamoDBStreamsAsyncFactory());
     }
 
     @Override
