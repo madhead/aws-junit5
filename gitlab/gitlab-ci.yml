@@ -59,6 +59,10 @@ unit@openjdk:12:
   extends: .unit
   image: openjdk:12
 
+unit@openjdk:13:
+  extends: .unit
+  image: openjdk:13
+
 gradle-version:
   stage: test
   image: openjdk:8
