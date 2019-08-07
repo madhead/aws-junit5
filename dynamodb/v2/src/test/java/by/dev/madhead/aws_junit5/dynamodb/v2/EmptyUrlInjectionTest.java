@@ -1,23 +1,12 @@
-package by.dev.madhead.aws_junit5.dynamodb.v1;
+package by.dev.madhead.aws_junit5.dynamodb.v2;
 
 import by.dev.madhead.aws_junit5.dynamodb.DynamoDBLocal;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 class EmptyUrlInjectionTest {
-    @DynamoDBLocal(serviceConfiguration = ServiceConfiguration.class)
-    private AmazonDynamoDB client;
-
-    @Test
-    void test() throws Exception {
-        final IllegalArgumentException exception = Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> new DynamoDBLocalExtension().postProcessTestInstance(this, null)
-        );
-    }
-
     public static final class ServiceConfiguration implements by.dev.madhead.aws_junit5.common.ServiceConfiguration {
         @Override
         public String url() {
@@ -26,7 +15,7 @@ class EmptyUrlInjectionTest {
 
         @Override
         public String region() {
-            return Regions.US_EAST_1.getName();
+            return Region.US_EAST_1.id();
         }
 
         @Override
@@ -38,5 +27,16 @@ class EmptyUrlInjectionTest {
         public String secretKey() {
             return "secretKey";
         }
+    }
+
+    @DynamoDBLocal(serviceConfiguration = ServiceConfiguration.class)
+    private DynamoDbClient client;
+
+    @Test
+    void test() throws Exception {
+        final IllegalArgumentException exception = Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () -> new DynamoDBLocalExtension().postProcessTestInstance(this, null)
+        );
     }
 }

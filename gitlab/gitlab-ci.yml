@@ -38,9 +38,13 @@ stages:
       - dynamodb/v1/build/reports/
       - dynamodb/v1/build/test-results/
       - dynamodb/v1/build/jacoco/
+      - dynamodb/v2/build/reports/
+      - dynamodb/v2/build/test-results/
+      - dynamodb/v2/build/jacoco/
     reports:
       junit:
         - dynamodb/v1/build/test-results/test/TEST-*.xml
+        - dynamodb/v2/build/test-results/test/TEST-*.xml
 
 unit@openjdk:8:
   extends: .unit

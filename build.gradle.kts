@@ -43,7 +43,7 @@ configure(
                 v2 = "2.+"
             } else {
                 v1 = "1.11.79"
-                v2 = "2.0.0"
+                v2 = "2.1.0"
             }
             mavenBom("com.amazonaws:aws-java-sdk-bom:$v1")
             mavenBom("software.amazon.awssdk:bom:$v2")

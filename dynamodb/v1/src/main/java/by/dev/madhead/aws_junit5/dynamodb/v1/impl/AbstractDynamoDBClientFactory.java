@@ -5,6 +5,7 @@ import by.dev.madhead.aws_junit5.dynamodb.DynamoDBLocal;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.util.StringUtils;
 
 public abstract class AbstractDynamoDBClientFactory<S extends AwsClientBuilder<S, T>, T> implements DynamoDBClientFactory<T> {
     private final AwsClientBuilder<S, T> awsClientBuilder;
@@ -16,6 +17,8 @@ public abstract class AbstractDynamoDBClientFactory<S extends AwsClientBuilder<S
     @Override
     public T createClient(final DynamoDBLocal configuration) throws Exception {
         final ServiceConfiguration serviceConfiguration = configuration.serviceConfiguration().newInstance();
+
+        validate(serviceConfiguration);
 
         return awsClientBuilder
             .withEndpointConfiguration(
@@ -30,5 +33,11 @@ public abstract class AbstractDynamoDBClientFactory<S extends AwsClientBuilder<S
                 )
             )
             .build();
+    }
+
+    private void validate(final ServiceConfiguration serviceConfiguration) {
+        if (StringUtils.isNullOrEmpty(serviceConfiguration.url())) {
+            throw new IllegalArgumentException("Missing URL");
+        }
     }
 }
