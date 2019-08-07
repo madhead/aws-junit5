@@ -1,3 +1,6 @@
+variables:
+  SERVICES: dynamodb,dynamodbstreams
+
 stages:
   - test
   - publish
@@ -10,13 +13,12 @@ stages:
       - .gradle/wrapper
       - .gradle/caches
   services:
-    - name: amazon/dynamodb-local
-      alias: dynamodb-local-1
-    - name: amazon/dynamodb-local
-      alias: dynamodb-local-2
+    - name: localstack/localstack
+      alias: localstack
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - export GRADLE_OPTS='-Dorg.gradle.daemon=false'
+
     - source gitlab/test.env
 
     - yum -y install unzip || true

@@ -1,5 +1,6 @@
 package by.dev.madhead.aws_junit5.dynamodb.v1;
 
+import by.dev.madhead.aws_junit5.dynamodb.DynamoDBLocal;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreams;
 import com.amazonaws.services.dynamodbv2.model.ListStreamsRequest;
 import com.amazonaws.services.dynamodbv2.model.Stream;
@@ -14,41 +15,19 @@ import java.util.stream.Collectors;
 @ExtendWith(DynamoDBLocalExtension.class)
 class AmazonDynamoDBStreamsInjectionsTest {
     @DynamoDBLocal(
-        serviceConfiguration = InjectionsTestEnvironmentVariablesServiceConfigurationInstance1.class
+        serviceConfiguration = EnvironmentVariablesDynamoDBServiceConfiguration.class
     )
-    private AmazonDynamoDBStreams amazonDynamoDBStreamsBySystemProperty;
-
-    @DynamoDBLocal(
-        serviceConfiguration = InjectionsTestSystemPropertiesServiceConfigurationInstance2.class
-    )
-    private AmazonDynamoDBStreams amazonDynamoDBStreamsByEnvironmentVariable;
+    private AmazonDynamoDBStreams amazonDynamoDBStreams;
 
     @Test
     @DisplayName("AmazonDynamoDBStreams should be injected and configured properly with environment variables")
-    void test1() {
-        Assertions.assertNotNull(amazonDynamoDBStreamsBySystemProperty);
+    void test() {
+        Assertions.assertNotNull(amazonDynamoDBStreams);
 
         Assertions.assertEquals(
-            Collections.singletonList("table_1"),
-            amazonDynamoDBStreamsBySystemProperty
-                .listStreams(new ListStreamsRequest().withTableName("table_1"))
-                .getStreams()
-                .stream()
-                .map(Stream::getTableName)
-                .sorted()
-                .collect(Collectors.toList())
-        );
-    }
-
-    @Test
-    @DisplayName("AmazonDynamoDBStreams should be injected and configured properly with system properties")
-    void test2() {
-        Assertions.assertNotNull(amazonDynamoDBStreamsByEnvironmentVariable);
-
-        Assertions.assertEquals(
-            Collections.singletonList("table_2"),
-            amazonDynamoDBStreamsByEnvironmentVariable
-                .listStreams(new ListStreamsRequest().withTableName("table_2"))
+            Collections.singletonList("table"),
+            amazonDynamoDBStreams
+                .listStreams(new ListStreamsRequest().withTableName("table"))
                 .getStreams()
                 .stream()
                 .map(Stream::getTableName)

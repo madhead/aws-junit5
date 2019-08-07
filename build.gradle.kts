@@ -17,7 +17,6 @@ buildScan {
 
 configure(
     subprojects
-        - project("dynamodb")
 ) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()

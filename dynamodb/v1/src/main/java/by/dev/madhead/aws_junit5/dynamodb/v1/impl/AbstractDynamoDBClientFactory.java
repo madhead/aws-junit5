@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.dynamodb.v1.impl;
 
 import by.dev.madhead.aws_junit5.common.ServiceConfiguration;
-import by.dev.madhead.aws_junit5.dynamodb.v1.DynamoDBLocal;
+import by.dev.madhead.aws_junit5.dynamodb.DynamoDBLocal;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
