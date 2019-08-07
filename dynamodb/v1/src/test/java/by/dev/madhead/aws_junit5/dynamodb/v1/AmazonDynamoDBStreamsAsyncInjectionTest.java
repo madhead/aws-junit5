@@ -5,7 +5,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreamsAsync;
 import com.amazonaws.services.dynamodbv2.model.ListStreamsRequest;
 import com.amazonaws.services.dynamodbv2.model.Stream;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -13,20 +12,19 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 @ExtendWith(DynamoDBLocalExtension.class)
-class AmazonDynamoDBStreamsAsyncInjectionsTest {
+class AmazonDynamoDBStreamsAsyncInjectionTest {
     @DynamoDBLocal(
         serviceConfiguration = SystemPropertiesDynamoDBStreamsServiceConfiguration.class
     )
-    private AmazonDynamoDBStreamsAsync amazonDynamoDBStreamsAsync;
+    private AmazonDynamoDBStreamsAsync client;
 
     @Test
-    @DisplayName("AmazonDynamoDBStreamsAsync should be injected and configured properly with system properties")
     void test() throws Exception {
-        Assertions.assertNotNull(amazonDynamoDBStreamsAsync);
+        Assertions.assertNotNull(client);
 
         Assertions.assertEquals(
             Collections.singletonList("table"),
-            amazonDynamoDBStreamsAsync
+            client
                 .listStreamsAsync(new ListStreamsRequest().withTableName("table"))
                 .get()
                 .getStreams()

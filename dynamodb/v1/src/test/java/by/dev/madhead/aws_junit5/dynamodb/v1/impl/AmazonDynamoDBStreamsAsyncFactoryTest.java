@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.dynamodb.v1.impl;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreamsAsync;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class AmazonDynamoDBStreamsAsyncFactoryTest {
@@ -9,12 +9,10 @@ class AmazonDynamoDBStreamsAsyncFactoryTest {
         new AmazonDynamoDBStreamsAsyncFactory();
 
     @Test
-    @DisplayName("AmazonDynamoDBStreamsAsyncFactory should create instances of AmazonDynamoDBStreamsAsync")
     void test() throws Exception {
-        Assertions.assertNotNull(
-            amazonDynamoDBStreamsAsyncFactory.createClient(
-                new DynamoDBLocalImpl(FactoryTestServiceConfiguration.class)
-            )
+        final AmazonDynamoDBStreamsAsync client = amazonDynamoDBStreamsAsyncFactory.createClient(
+            new DynamoDBLocalImpl(FactoryTestServiceConfiguration.class)
         );
+        Assertions.assertNotNull(client);
     }
 }
