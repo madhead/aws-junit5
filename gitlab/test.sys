@@ -7,3 +7,8 @@ dynamodbstreams.url=http://localstack:4570
 dynamodbstreams.region=us-east-2
 dynamodbstreams.accessKey=accessKey
 dynamodbstreams.secretKey=secretKey
+
+s3.url=http://localstack:4572
+s3.region=us-east-2
+s3.accessKey=accessKey
+s3.secretKey=secretKey

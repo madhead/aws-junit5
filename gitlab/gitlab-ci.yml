@@ -1,5 +1,5 @@
 variables:
-  SERVICES: dynamodb,dynamodbstreams
+  SERVICES: dynamodb,dynamodbstreams,s3
 
 stages:
   - test
@@ -28,6 +28,7 @@ stages:
     - /tmp/awscli-bundle/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
     - dynamodb/seed/seed.sh
+    - s3/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace --scan
   artifacts:
@@ -35,16 +36,12 @@ stages:
     when: always
     expire_in: 1 day
     paths:
-      - dynamodb/v1/build/reports/
-      - dynamodb/v1/build/test-results/
-      - dynamodb/v1/build/jacoco/
-      - dynamodb/v2/build/reports/
-      - dynamodb/v2/build/test-results/
-      - dynamodb/v2/build/jacoco/
+      - "*/*/build/reports"
+      - "*/*/build/test-results"
+      - "*/*/build/jacoco"
     reports:
       junit:
-        - dynamodb/v1/build/test-results/test/TEST-*.xml
-        - dynamodb/v2/build/test-results/test/TEST-*.xml
+        - "*/*/build/test-results/test/TEST-*.xml"
 
 unit@openjdk:8:
   extends: .unit
