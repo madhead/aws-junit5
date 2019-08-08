@@ -17,6 +17,8 @@ buildScan {
 
 configure(
     subprojects
+        - project(":dynamodb")
+        - project(":s3")
 ) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()
@@ -43,7 +45,7 @@ configure(
                 v2 = "2.+"
             } else {
                 v1 = "1.11.79"
-                v2 = "2.1.0"
+                v2 = "2.5.3"
             }
             mavenBom("com.amazonaws:aws-java-sdk-bom:$v1")
             mavenBom("software.amazon.awssdk:bom:$v2")

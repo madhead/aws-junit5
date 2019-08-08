@@ -105,7 +105,7 @@ Using the helper is easy:
 1. Annotate the fields of supported types (see above) that you want to be injected with `@by.dev.madhead.aws_junit5.dynamodb.v1.DynamoDBLocal`.
 1. Provide the URL for the DynamoDB Local by specifying one of the `url`, `urlSystemProperty` or `urlEnvironmentVariable` properties of the `@DynamoDBLocal`.
 `url` has the highest order of precedence among them, `urlEnvironmentVariable` is the lowest.
-1. Extend the test class with `by.dev.madhead.aws_junit5.dynamodb.v1.DynamoDBLocalExtension`.
+1. Extend the test class with `by.dev.madhead.aws_junit5.dynamodb.v1.DynamoDB`.
 
 That's it.
 Check out this example:
