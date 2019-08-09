@@ -9,7 +9,9 @@ include(
     ":s3:v1",
     ":s3:v2",
     ":kinesis:v1",
-    ":kinesis:v2"
+    ":kinesis:v2",
+    ":sns:v1",
+    ":sns:v2"
 )
 
 project(":common:v1").name = "common-v1"
@@ -20,3 +22,5 @@ project(":s3:v1").name = "s3-v1"
 project(":s3:v2").name = "s3-v2"
 project(":kinesis:v1").name = "kinesis-v1"
 project(":kinesis:v2").name = "kinesis-v2"
+project(":sns:v1").name = "sns-v1"
+project(":sns:v2").name = "sns-v2"

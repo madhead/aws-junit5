@@ -17,6 +17,8 @@ import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;
 import software.amazon.awssdk.services.kinesis.KinesisClient;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.sns.SnsAsyncClient;
+import software.amazon.awssdk.services.sns.SnsClient;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
@@ -80,6 +82,8 @@ class AWSClientFactoryTest {
                 put(KinesisAsyncClient.class, KinesisAsyncClient.builder());
                 put(FirehoseClient.class, FirehoseClient.builder());
                 put(FirehoseAsyncClient.class, FirehoseAsyncClient.builder());
+                put(SnsClient.class, SnsClient.builder());
+                put(SnsAsyncClient.class, SnsAsyncClient.builder());
             }}.entrySet()
                 .stream()
                 .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(

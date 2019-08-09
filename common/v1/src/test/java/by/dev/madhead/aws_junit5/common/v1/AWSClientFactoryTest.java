@@ -15,6 +15,10 @@ import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseAsyncClientBu
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSAsync;
+import com.amazonaws.services.sns.AmazonSNSAsyncClientBuilder;
+import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -80,6 +84,8 @@ class AWSClientFactoryTest {
                 put(AmazonKinesisAsync.class, AmazonKinesisAsyncClientBuilder.standard());
                 put(AmazonKinesisFirehose.class, AmazonKinesisFirehoseClientBuilder.standard());
                 put(AmazonKinesisFirehoseAsync.class, AmazonKinesisFirehoseAsyncClientBuilder.standard());
+                put(AmazonSNS.class, AmazonSNSClientBuilder.standard());
+                put(AmazonSNSAsync.class, AmazonSNSAsyncClientBuilder.standard());
             }}.entrySet()
                 .stream()
                 .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(
