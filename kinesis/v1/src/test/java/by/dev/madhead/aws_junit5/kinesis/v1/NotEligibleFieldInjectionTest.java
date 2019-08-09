@@ -1,9 +1,9 @@
-package by.dev.madhead.aws_junit5.s3.v2;
+package by.dev.madhead.aws_junit5.kinesis.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
+import com.amazonaws.regions.Regions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import software.amazon.awssdk.regions.Region;
 
 class NotEligibleFieldInjectionTest {
     @AWSClient(clientConfiguration = ClientConfiguration.class)
@@ -13,11 +13,11 @@ class NotEligibleFieldInjectionTest {
     void test() throws Exception {
         final IllegalArgumentException exception = Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new S3().postProcessTestInstance(this, null)
+            () -> new Kinesis().postProcessTestInstance(this, null)
         );
 
         Assertions.assertEquals(
-            "class java.lang.String is not supported by S3 extension.",
+            "class java.lang.String is not supported by Kinesis extension.",
             exception.getMessage()
         );
     }
@@ -30,7 +30,7 @@ class NotEligibleFieldInjectionTest {
 
         @Override
         public String region() {
-            return Region.US_EAST_1.id();
+            return Regions.US_EAST_1.getName();
         }
 
         @Override

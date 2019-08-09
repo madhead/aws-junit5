@@ -1,4 +1,4 @@
-package by.dev.madhead.aws_junit5.s3.v2;
+package by.dev.madhead.aws_junit5.kinesis.v2;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
 import org.junit.jupiter.api.Assertions;
@@ -13,11 +13,11 @@ class NotEligibleFieldInjectionTest {
     void test() throws Exception {
         final IllegalArgumentException exception = Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new S3().postProcessTestInstance(this, null)
+            () -> new Kinesis().postProcessTestInstance(this, null)
         );
 
         Assertions.assertEquals(
-            "class java.lang.String is not supported by S3 extension.",
+            "class java.lang.String is not supported by Kinesis extension.",
             exception.getMessage()
         );
     }

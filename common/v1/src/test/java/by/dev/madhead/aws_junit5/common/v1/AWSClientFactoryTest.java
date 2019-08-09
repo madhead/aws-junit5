@@ -5,6 +5,14 @@ import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.*;
+import com.amazonaws.services.kinesis.AmazonKinesis;
+import com.amazonaws.services.kinesis.AmazonKinesisAsync;
+import com.amazonaws.services.kinesis.AmazonKinesisAsyncClientBuilder;
+import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
+import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose;
+import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseAsync;
+import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseAsyncClientBuilder;
+import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.junit.jupiter.api.Assertions;
@@ -68,6 +76,10 @@ class AWSClientFactoryTest {
                 put(AmazonDynamoDBStreams.class, AmazonDynamoDBStreamsClientBuilder.standard());
                 put(AmazonDynamoDBStreamsAsync.class, AmazonDynamoDBStreamsAsyncClientBuilder.standard());
                 put(AmazonS3.class, AmazonS3ClientBuilder.standard());
+                put(AmazonKinesis.class, AmazonKinesisClientBuilder.standard());
+                put(AmazonKinesisAsync.class, AmazonKinesisAsyncClientBuilder.standard());
+                put(AmazonKinesisFirehose.class, AmazonKinesisFirehoseClientBuilder.standard());
+                put(AmazonKinesisFirehoseAsync.class, AmazonKinesisFirehoseAsyncClientBuilder.standard());
             }}.entrySet()
                 .stream()
                 .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(

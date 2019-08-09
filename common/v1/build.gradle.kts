@@ -4,4 +4,5 @@ dependencies {
 
     testImplementation("com.amazonaws:aws-java-sdk-dynamodb")
     testImplementation("com.amazonaws:aws-java-sdk-s3")
+    testImplementation("com.amazonaws:aws-java-sdk-kinesis")
 }
