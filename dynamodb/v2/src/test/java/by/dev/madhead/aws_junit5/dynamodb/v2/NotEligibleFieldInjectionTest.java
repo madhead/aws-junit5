@@ -25,7 +25,7 @@ class NotEligibleFieldInjectionTest {
     public static final class ClientConfiguration implements by.dev.madhead.aws_junit5.common.AWSClientConfiguration {
         @Override
         public String url() {
-            return "";
+            return "https://madhead.me";
         }
 
         @Override

@@ -12,3 +12,13 @@ s3.url=http://localstack:4572
 s3.region=us-east-2
 s3.accessKey=accessKey
 s3.secretKey=secretKey
+
+kinesis.url=http://localstack:4568
+kinesis.region=us-east-2
+kinesis.accessKey=accessKey
+kinesis.secretKey=secretKey
+
+firehose.url=http://localstack:4573
+firehose.region=us-east-2
+firehose.accessKey=accessKey
+firehose.secretKey=secretKey

@@ -11,6 +11,10 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient;
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClient;
+import software.amazon.awssdk.services.firehose.FirehoseAsyncClient;
+import software.amazon.awssdk.services.firehose.FirehoseClient;
+import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;
+import software.amazon.awssdk.services.kinesis.KinesisClient;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Client;
 
@@ -72,6 +76,10 @@ class AWSClientFactoryTest {
                 put(DynamoDbStreamsAsyncClient.class, DynamoDbStreamsAsyncClient.builder());
                 put(S3Client.class, S3Client.builder());
                 put(S3AsyncClient.class, S3AsyncClient.builder());
+                put(KinesisClient.class, KinesisClient.builder());
+                put(KinesisAsyncClient.class, KinesisAsyncClient.builder());
+                put(FirehoseClient.class, FirehoseClient.builder());
+                put(FirehoseAsyncClient.class, FirehoseAsyncClient.builder());
             }}.entrySet()
                 .stream()
                 .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(

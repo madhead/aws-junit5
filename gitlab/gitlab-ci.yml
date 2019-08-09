@@ -1,5 +1,6 @@
 variables:
-  SERVICES: dynamodb,dynamodbstreams,s3
+  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose
+  AWS_CBOR_DISABLE: 'true'
 
 stages:
   - test
@@ -29,6 +30,7 @@ stages:
 
     - dynamodb/seed/seed.sh
     - s3/seed/seed.sh
+    - kinesis/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace --scan
   artifacts:
