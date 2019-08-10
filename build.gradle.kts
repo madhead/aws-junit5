@@ -22,6 +22,7 @@ configure(
         - project(":kinesis")
         - project(":sns")
         - project(":sqs")
+        - project(":ses")
 ) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()

@@ -32,3 +32,8 @@ sqs.url=http://localstack:4576
 sqs.region=us-east-2
 sqs.accessKey=accessKey
 sqs.secretKey=secretKey
+
+ses.url=http://localstack:4579
+ses.region=us-east-2
+ses.accessKey=accessKey
+ses.secretKey=secretKey
