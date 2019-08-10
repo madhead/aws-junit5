@@ -20,6 +20,7 @@ configure(
         - project(":dynamodb")
         - project(":s3")
         - project(":kinesis")
+        - project(":sns")
 ) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()

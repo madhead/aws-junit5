@@ -22,3 +22,8 @@ firehose.url=http://localstack:4573
 firehose.region=us-east-2
 firehose.accessKey=accessKey
 firehose.secretKey=secretKey
+
+sns.url=http://localstack:4575
+sns.region=us-east-2
+sns.accessKey=accessKey
+sns.secretKey=secretKey
