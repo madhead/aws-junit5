@@ -102,7 +102,7 @@ configure(
             repo = "maven"
             name = "${project.group}:${project.name}"
             setLicenses("LGPL-3.0")
-            vcsUrl = "https://gitlab.com/madhead/aws-junit5"
+            vcsUrl = "git@gitlab.com:madhead/aws-junit5.git"
             version(delegateClosureOf<BintrayExtension.VersionConfig> {
                 name = project.version.toString()
             })
