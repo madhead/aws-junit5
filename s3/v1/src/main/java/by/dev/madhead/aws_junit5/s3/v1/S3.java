@@ -1,6 +1,5 @@
 package by.dev.madhead.aws_junit5.s3.v1;
 
-import by.dev.madhead.aws_junit5.common.AWSClient;
 import by.dev.madhead.aws_junit5.common.impl.AWSClientExtension;
 import by.dev.madhead.aws_junit5.common.v1.AWSClientFactory;
 import com.amazonaws.services.s3.AmazonS3;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Use {@code S3} to extend tests with fields that are subjects for S3 injection.
+ * Use {@link S3} to extend tests with fields that are subjects for S3 injection.
  */
 public class S3 extends AWSClientExtension {
     private final static Map<Class, AWSClientFactory> factories;
@@ -27,7 +26,7 @@ public class S3 extends AWSClientExtension {
     }
 
     @Override
-    protected Object client(final Field field, AWSClient configuration) throws Exception {
-        return factories.get(field.getType()).createClient(configuration);
+    protected Object client(final Field field) throws Exception {
+        return factories.get(field.getType()).client(field);
     }
 }

@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.dynamo.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsync;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @ExtendWith(DynamoDB.class)
 class AmazonDynamoDBAsyncInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private AmazonDynamoDBAsync client;
 
@@ -27,7 +27,7 @@ class AmazonDynamoDBAsyncInjectionTest {
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getProperty("dynamodb.url");

@@ -8,16 +8,16 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * {@code @AWSClient} is used to annotate fields that are subjects for AWS client injection.
+ * Use {@link AWSClient} to annotate fields in test classes that are subjects for AWS client injection.
  */
 @Documented
 @Target(FIELD)
 @Retention(RUNTIME)
 public @interface AWSClient {
     /**
-     * AWS client configuration provider implementation class.
+     * AWS service endpoint configuration.
      *
-     * @return AWS client configuration provider implementation class.
+     * @return AWS service endpoint configuration.
      */
-    Class<? extends AWSClientConfiguration> clientConfiguration();
+    Class<? extends AWSEndpoint> endpoint();
 }

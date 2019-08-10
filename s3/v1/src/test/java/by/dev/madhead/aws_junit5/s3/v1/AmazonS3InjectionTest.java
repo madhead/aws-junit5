@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.s3.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @ExtendWith(S3.class)
 class AmazonS3InjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private AmazonS3 client;
 
@@ -28,7 +28,7 @@ class AmazonS3InjectionTest {
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getenv("S3_URL");

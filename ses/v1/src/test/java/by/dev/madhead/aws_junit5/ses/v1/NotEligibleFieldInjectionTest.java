@@ -1,12 +1,13 @@
 package by.dev.madhead.aws_junit5.ses.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.regions.Regions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class NotEligibleFieldInjectionTest {
-    @AWSClient(clientConfiguration = ClientConfiguration.class)
+    @AWSClient(endpoint = Endpoint.class)
     private String client;
 
     @Test
@@ -22,7 +23,7 @@ class NotEligibleFieldInjectionTest {
         );
     }
 
-    public static final class ClientConfiguration implements by.dev.madhead.aws_junit5.common.AWSClientConfiguration {
+    public static final class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return "https://madhead.me";

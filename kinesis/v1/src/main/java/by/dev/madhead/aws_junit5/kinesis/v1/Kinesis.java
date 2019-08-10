@@ -1,6 +1,5 @@
 package by.dev.madhead.aws_junit5.kinesis.v1;
 
-import by.dev.madhead.aws_junit5.common.AWSClient;
 import by.dev.madhead.aws_junit5.common.impl.AWSClientExtension;
 import by.dev.madhead.aws_junit5.common.v1.AWSClientFactory;
 import com.amazonaws.services.kinesis.AmazonKinesis;
@@ -17,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Use {@code Kinesis} to extend tests with fields that are subjects for Kinesis injection.
+ * Use {@link Kinesis} to extend tests with fields that are subjects for Kinesis injection.
  */
 public class Kinesis extends AWSClientExtension {
     private final static Map<Class, AWSClientFactory> factories;
@@ -36,7 +35,7 @@ public class Kinesis extends AWSClientExtension {
     }
 
     @Override
-    protected Object client(final Field field, AWSClient configuration) throws Exception {
-        return factories.get(field.getType()).createClient(configuration);
+    protected Object client(final Field field) throws Exception {
+        return factories.get(field.getType()).client(field);
     }
 }

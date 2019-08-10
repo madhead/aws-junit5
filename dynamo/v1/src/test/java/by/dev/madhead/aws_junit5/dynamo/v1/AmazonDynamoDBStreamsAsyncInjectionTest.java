@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.dynamo.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreamsAsync;
 import com.amazonaws.services.dynamodbv2.model.ListStreamsRequest;
 import com.amazonaws.services.dynamodbv2.model.Stream;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @ExtendWith(DynamoDB.class)
 class AmazonDynamoDBStreamsAsyncInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private AmazonDynamoDBStreamsAsync client;
 
@@ -36,7 +36,7 @@ class AmazonDynamoDBStreamsAsyncInjectionTest {
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getProperty("dynamodbstreams.url");

@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.kinesis.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose;
 import com.amazonaws.services.kinesisfirehose.model.ListDeliveryStreamsRequest;
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @ExtendWith(Kinesis.class)
 class AmazonKinesisFirehoseInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private AmazonKinesisFirehose client;
 
@@ -33,7 +33,7 @@ class AmazonKinesisFirehoseInjectionTest {
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getenv("FIREHOSE_URL");
