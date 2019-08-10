@@ -27,3 +27,8 @@ sns.url=http://localstack:4575
 sns.region=us-east-2
 sns.accessKey=accessKey
 sns.secretKey=secretKey
+
+sqs.url=http://localstack:4576
+sqs.region=us-east-2
+sqs.accessKey=accessKey
+sqs.secretKey=secretKey

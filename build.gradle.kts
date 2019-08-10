@@ -21,6 +21,7 @@ configure(
         - project(":s3")
         - project(":kinesis")
         - project(":sns")
+        - project(":sqs")
 ) {
     apply<JavaLibraryPlugin>()
     apply<DependencyManagementPlugin>()

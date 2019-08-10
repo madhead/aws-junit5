@@ -1,5 +1,5 @@
 variables:
-  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose
+  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs
   AWS_CBOR_DISABLE: 'true'
 
 stages:
@@ -41,6 +41,9 @@ stages:
 
     # - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4575; do sleep 1; done'
     # - sns/seed/seed.sh
+
+    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4576; do sleep 1; done'
+    - sqs/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace --scan
   artifacts:
