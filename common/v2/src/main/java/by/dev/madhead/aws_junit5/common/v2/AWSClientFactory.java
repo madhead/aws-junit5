@@ -8,6 +8,7 @@ import software.amazon.awssdk.awscore.client.builder.AwsClientBuilder;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.utils.StringUtils;
 
+import java.lang.reflect.Field;
 import java.net.URI;
 
 public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> implements by.dev.madhead.aws_junit5.common.AWSClientFactory<T> {
@@ -18,7 +19,7 @@ public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> impleme
     }
 
     @Override
-    public T createClient(final AWSClient configuration) throws Exception {
+    public T createClient(final Field field, final AWSClient configuration) throws Exception {
         final AWSClientConfiguration clientConfiguration = configuration.clientConfiguration().newInstance();
 
         validate(clientConfiguration);

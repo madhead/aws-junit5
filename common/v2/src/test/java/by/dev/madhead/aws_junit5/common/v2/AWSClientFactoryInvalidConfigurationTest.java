@@ -17,7 +17,7 @@ class AWSClientFactoryInvalidConfigurationTest {
             () -> {
                 @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
                     new AWSClientFactory(DynamoDbClient.builder());
-                final Object client = clientFactory.createClient(new AWSClientImpl(EmptyURLAWSClientConfiguration.class));
+                final Object client = clientFactory.createClient(field, new AWSClientImpl(EmptyURLAWSClientConfiguration.class));
             }
         );
     }
@@ -29,7 +29,7 @@ class AWSClientFactoryInvalidConfigurationTest {
             () -> {
                 @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
                     new AWSClientFactory(DynamoDbClient.builder());
-                final Object client = clientFactory.createClient(new AWSClientImpl(NullURLAWSClientConfiguration.class));
+                final Object client = clientFactory.createClient(field, new AWSClientImpl(NullURLAWSClientConfiguration.class));
             }
         );
     }

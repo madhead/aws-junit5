@@ -56,7 +56,7 @@ class AWSClientFactoryTest {
                     "AWS client factory test for " + entry.getKey().getSimpleName(),
                     () -> {
                         @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
-                        final Object client = clientFactory.createClient(new AWSClientImpl(MockAWSClientConfiguration.class));
+                        final Object client = clientFactory.createClient(field, new AWSClientImpl(MockAWSClientConfiguration.class));
 
                         Assertions.assertTrue(entry.getKey().isInstance(client));
                     }

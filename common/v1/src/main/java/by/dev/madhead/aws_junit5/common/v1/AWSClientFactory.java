@@ -7,6 +7,8 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.util.StringUtils;
 
+import java.lang.reflect.Field;
+
 public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> implements by.dev.madhead.aws_junit5.common.AWSClientFactory<T> {
     private final AwsClientBuilder<S, T> awsClientBuilder;
 
@@ -15,7 +17,7 @@ public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> impleme
     }
 
     @Override
-    public T createClient(final AWSClient configuration) throws Exception {
+    public T createClient(final Field field, final AWSClient configuration) throws Exception {
         final AWSClientConfiguration clientConfiguration = configuration.clientConfiguration().newInstance();
 
         validate(clientConfiguration);

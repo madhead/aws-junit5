@@ -29,6 +29,6 @@ public class SES extends AWSClientExtension {
 
     @Override
     protected Object client(final Field field, AWSClient configuration) throws Exception {
-        return factories.get(field.getType()).createClient(configuration);
+        return factories.get(field.getType()).createClient(field, configuration);
     }
 }
