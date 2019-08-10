@@ -7,4 +7,6 @@ dependencies {
     testImplementation("software.amazon.awssdk:kinesis")
     testImplementation("software.amazon.awssdk:firehose")
     testImplementation("software.amazon.awssdk:sns")
+    testImplementation("software.amazon.awssdk:sqs")
+    testImplementation("software.amazon.awssdk:ses")
 }

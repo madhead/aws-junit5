@@ -10,6 +10,30 @@ import org.junit.jupiter.api.Test;
 import java.lang.annotation.Annotation;
 
 class AWSClientFactoryInvalidConfigurationTest {
+    @Test
+    void testEmpty() throws Exception {
+        final IllegalArgumentException exception = Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
+                    new AWSClientFactory(AmazonDynamoDBClientBuilder.standard());
+                final Object client = clientFactory.createClient(new AWSClientImpl(EmptyURLAWSClientConfiguration.class));
+            }
+        );
+    }
+
+    @Test
+    void testNull() throws Exception {
+        final IllegalArgumentException exception = Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
+                    new AWSClientFactory(AmazonDynamoDBClientBuilder.standard());
+                final Object client = clientFactory.createClient(new AWSClientImpl(NullURLAWSClientConfiguration.class));
+            }
+        );
+    }
+
     static class EmptyURLAWSClientConfiguration implements AWSClientConfiguration {
         @Override
         public String url() {
@@ -72,29 +96,5 @@ class AWSClientFactoryInvalidConfigurationTest {
         public Class<? extends Annotation> annotationType() {
             return AWSClient.class;
         }
-    }
-
-    @Test
-    void testEmpty() throws Exception {
-        final IllegalArgumentException exception = Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
-                    new AWSClientFactory(AmazonDynamoDBClientBuilder.standard());
-                final Object client = clientFactory.createClient(new AWSClientImpl(EmptyURLAWSClientConfiguration.class));
-            }
-        );
-    }
-
-    @Test
-    void testNull() throws Exception {
-        final IllegalArgumentException exception = Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory =
-                    new AWSClientFactory(AmazonDynamoDBClientBuilder.standard());
-                final Object client = clientFactory.createClient(new AWSClientImpl(NullURLAWSClientConfiguration.class));
-            }
-        );
     }
 }

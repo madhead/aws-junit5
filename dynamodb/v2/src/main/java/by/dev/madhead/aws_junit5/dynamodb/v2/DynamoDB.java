@@ -3,8 +3,6 @@ package by.dev.madhead.aws_junit5.dynamodb.v2;
 import by.dev.madhead.aws_junit5.common.AWSClient;
 import by.dev.madhead.aws_junit5.common.impl.AWSClientExtension;
 import by.dev.madhead.aws_junit5.common.v2.AWSClientFactory;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient;

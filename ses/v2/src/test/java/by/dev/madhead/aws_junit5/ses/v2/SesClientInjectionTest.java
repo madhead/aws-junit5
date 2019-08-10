@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.ses.SesClient;
 
-import java.util.Collections;
-import java.util.stream.Collectors;
-
 @ExtendWith(SES.class)
 class SesClientInjectionTest {
     @AWSClient(
