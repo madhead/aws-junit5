@@ -17,7 +17,7 @@ buildScan {
 
 configure(
     subprojects
-        - project(":dynamodb")
+        - project(":dynamo")
         - project(":s3")
         - project(":kinesis")
         - project(":sns")
@@ -101,7 +101,7 @@ configure(
         pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
             repo = "maven"
             name = "${project.group}:${project.name}"
-            setLicenses("LGPL-3.0")
+            setLicenses("MIT")
             vcsUrl = "https://gitlab.com/madhead/aws-junit5"
             version(delegateClosureOf<BintrayExtension.VersionConfig> {
                 name = project.version.toString()

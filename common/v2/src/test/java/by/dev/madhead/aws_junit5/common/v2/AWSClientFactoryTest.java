@@ -17,8 +17,12 @@ import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;
 import software.amazon.awssdk.services.kinesis.KinesisClient;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.ses.SesAsyncClient;
+import software.amazon.awssdk.services.ses.SesClient;
 import software.amazon.awssdk.services.sns.SnsAsyncClient;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sqs.SqsAsyncClient;
+import software.amazon.awssdk.services.sqs.SqsClient;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
@@ -26,6 +30,39 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 class AWSClientFactoryTest {
+    @TestFactory
+    Stream<DynamicTest> test() {
+        return
+            new HashMap<Class, AwsClientBuilder>() {{
+                put(DynamoDbClient.class, DynamoDbClient.builder());
+                put(DynamoDbAsyncClient.class, DynamoDbAsyncClient.builder());
+                put(DynamoDbStreamsClient.class, DynamoDbStreamsClient.builder());
+                put(DynamoDbStreamsAsyncClient.class, DynamoDbStreamsAsyncClient.builder());
+                put(S3Client.class, S3Client.builder());
+                put(S3AsyncClient.class, S3AsyncClient.builder());
+                put(KinesisClient.class, KinesisClient.builder());
+                put(KinesisAsyncClient.class, KinesisAsyncClient.builder());
+                put(FirehoseClient.class, FirehoseClient.builder());
+                put(FirehoseAsyncClient.class, FirehoseAsyncClient.builder());
+                put(SnsClient.class, SnsClient.builder());
+                put(SnsAsyncClient.class, SnsAsyncClient.builder());
+                put(SqsClient.class, SqsClient.builder());
+                put(SqsAsyncClient.class, SqsAsyncClient.builder());
+                put(SesClient.class, SesClient.builder());
+                put(SesAsyncClient.class, SesAsyncClient.builder());
+            }}.entrySet()
+                .stream()
+                .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(
+                    "AWS client factory test for " + entry.getKey().getSimpleName(),
+                    () -> {
+                        @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
+                        final Object client = clientFactory.createClient(new AWSClientImpl(MockAWSClientConfiguration.class));
+
+                        Assertions.assertTrue(entry.getKey().isInstance(client));
+                    }
+                ));
+    }
+
     static class MockAWSClientConfiguration implements AWSClientConfiguration {
         @Override
         public String url() {
@@ -66,34 +103,5 @@ class AWSClientFactoryTest {
         public Class<? extends Annotation> annotationType() {
             return AWSClient.class;
         }
-    }
-
-    @TestFactory
-    Stream<DynamicTest> test() {
-        return
-            new HashMap<Class, AwsClientBuilder>() {{
-                put(DynamoDbClient.class, DynamoDbClient.builder());
-                put(DynamoDbAsyncClient.class, DynamoDbAsyncClient.builder());
-                put(DynamoDbStreamsClient.class, DynamoDbStreamsClient.builder());
-                put(DynamoDbStreamsAsyncClient.class, DynamoDbStreamsAsyncClient.builder());
-                put(S3Client.class, S3Client.builder());
-                put(S3AsyncClient.class, S3AsyncClient.builder());
-                put(KinesisClient.class, KinesisClient.builder());
-                put(KinesisAsyncClient.class, KinesisAsyncClient.builder());
-                put(FirehoseClient.class, FirehoseClient.builder());
-                put(FirehoseAsyncClient.class, FirehoseAsyncClient.builder());
-                put(SnsClient.class, SnsClient.builder());
-                put(SnsAsyncClient.class, SnsAsyncClient.builder());
-            }}.entrySet()
-                .stream()
-                .map((Map.Entry<Class, AwsClientBuilder> entry) -> DynamicTest.dynamicTest(
-                    "AWS client factory test for " + entry.getKey().getSimpleName(),
-                    () -> {
-                        @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
-                        final Object client = clientFactory.createClient(new AWSClientImpl(MockAWSClientConfiguration.class));
-
-                        Assertions.assertTrue(entry.getKey().isInstance(client));
-                    }
-                ));
     }
 }
