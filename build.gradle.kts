@@ -8,11 +8,16 @@ plugins {
     id("com.gradle.build-scan").version("2.3")
     id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
     id("com.jfrog.bintray").version("1.8.4").apply(false)
+    id("org.asciidoctor.jvm.convert").version("3.0.0-alpha.3")
 }
 
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
+}
+
+repositories {
+    jcenter()
 }
 
 configure(
@@ -130,5 +135,38 @@ configure(
                 html.isEnabled = true
             }
         }
+    }
+}
+
+tasks {
+    register<Javadoc>("javadocs") {
+        group = "Documentation"
+        destinationDir = file("$buildDir/docs/javadoc")
+        title = project.name
+        with(options as StandardJavadocDocletOptions) {
+            links = listOf(
+                "https://docs.oracle.com/javase/8/docs/api/",
+                "https://junit.org/junit5/docs/current/api/",
+                "https://sdk.amazonaws.com/java/api/latest/",
+                "https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/"
+            )
+        }
+        subprojects.forEach {
+            it.tasks.withType<Javadoc>().forEach {
+                source += it.source
+                classpath += it.classpath
+                includes += it.includes
+                excludes += it.excludes
+            }
+        }
+    }
+
+    asciidoctor {
+        setSourceDir(file("docs"))
+        sources {
+            include("index.adoc")
+        }
+        setOutputDir(file("$buildDir/docs/asciidoc"))
+        setBaseDir(file("docs"))
     }
 }

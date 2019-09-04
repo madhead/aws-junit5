@@ -7,6 +7,7 @@ import software.amazon.awssdk.http.async.SdkAsyncHttpClient;
 import software.amazon.awssdk.http.nio.netty.NettyNioAsyncHttpClient;
 import software.amazon.awssdk.utils.AttributeMap;
 
+//tag::advanced_configuration[]
 public class KinesisSdkAsyncHttpClientFactory implements SdkAsyncHttpClientFactory {
     @Override
     public SdkAsyncHttpClient create() {
@@ -21,3 +22,4 @@ public class KinesisSdkAsyncHttpClientFactory implements SdkAsyncHttpClientFacto
             );
     }
 }
+//end::advanced_configuration[]

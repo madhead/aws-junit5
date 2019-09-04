@@ -1,0 +1,178 @@
+== Dependency Metadata
+
+Artifacts are deployed to https://bintray.com/bintray/jcenter[JCenter].
+
+* *Group ID*: `by.dev.madhead.aws-junit5`
+* *Version*: `{revnumber}`
+* *Artifacts*:
+** `dynamo-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html[`AmazonDynamoDB`], https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBAsync.html[`AmazonDynamoDBAsync`], https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreams.html[`AmazonDynamoDBStreams`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreamsAsync.html[`AmazonDynamoDBStreamsAsync`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/dynamo/v1/DynamoDB.html[`DynamoDB`] extension.
+** `dynamo-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbClient.html[`DynamoDbClient`], https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbAsyncClient.html[`DynamoDbAsyncClient`], https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsClient.html[`DynamoDbStreamsClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsAsyncClient.html[`DynamoDbStreamsAsyncClient`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/dynamo/v2/DynamoDB.html[`DynamoDB`] extension.
+** `s3-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html[`AmazonS3`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/s3/v1/S3.html[`S3`] extension.
+** `s3-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3Client.html[`S3Client`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3AsyncClient.html[`S3AsyncClient`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/s3/v2/S3.html[`S3`] extension.
+** `kinesis-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesis.html[`AmazonKinesis`], https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisAsync.html[`AmazonKinesisAsync`], https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehose.html[`AmazonKinesisFirehose`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehoseAsync.html[`AmazonKinesisFirehoseAsync`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/kinesis/v1/Kinesis.html[`Kinesis`] extension.
+** `kinesis-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisClient.html[`KinesisClient`], https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisAsyncClient.html[`KinesisAsyncClient`], https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseClient.html[`FirehoseClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseAsyncClient.html[`FirehoseAsyncClient`] via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/kinesis/v2/Kinesis.html[`Kinesis`] extension.
+** `sns-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNS.html[`AmazonSNS`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSAsync.html[`AmazonSNSAsync`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sns/v1/SNS.html[`SNS`] extension.
+** `sns-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsClient.html[`SnsClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsAsyncClient.html[`SnsAsyncClient`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sns/v2/SNS.html[`SNS`] extension.
+** `sqs-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQS.html[`AmazonSQS`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQSAsync.html[`AmazonSQSAsync`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sqs/v1/SQS.html[`SQS`] extension.
+** `sqs-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsClient.html[`SqsClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsAsyncClient.html[`SqsAsyncClient`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sqs/v2/SQS.html[`SQS`] extension.
+** `ses-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailService.html[`AmazonSimpleEmailService`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailServiceAsync.html[`AmazonSimpleEmailServiceAsync`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/ses/v1/SES.html[`SES`] extension.
+** `ses-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html[`SesClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html[`SesAsyncClient`]  via https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/ses/v2/SES.html[`SES`] extension.
+
+=== Gradle
+
+[source,kotlin,subs=attributes+]
+----
+repositories {
+    // Add the JCenter if you don't use it already
+    jcenter()
+}
+
+dependencies {
+    // Choose the dependencies you need
+    testImplementation("by.dev.madhead.aws-junit5:dynamo-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:dynamo-v2:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:s3-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:s3-v2:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:kinesis-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:kinesis-v2:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:sns-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:sns-v2:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:sqs-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:sqs-v2:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:ses-v1:{revnumber}")
+    testImplementation("by.dev.madhead.aws-junit5:ses-v2:{revnumber}")
+}
+----
+
+=== Maven
+
+JCenter repository must be added.
+They recommend to use `settings.xml` for that:
+
+.settings.xml
+[source,xml,subs=attributes+]
+----
+<settings>
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>bintray</name>
+                    <url>https://jcenter.bintray.com</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>bintray-plugins</name>
+                    <url>https://jcenter.bintray.com</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>bintray</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>bintray</activeProfile>
+    </activeProfiles>
+</settings>
+----
+
+Then specify the dependencies you need as usual:
+
+.pom.xml
+[source,xml,subs=attributes+]
+----
+<dependencies>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>dynamo-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>dynamo-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>s3-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>s3-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>kinesis-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>kinesis-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>sns-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>sns-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>sqs-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>sqs-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>ses-v1</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+<dependency>
+    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <artifactId>ses-v2</artifactId>
+    <version>{revnumber}</version>
+</dependency>
+</dependencies>
+----
