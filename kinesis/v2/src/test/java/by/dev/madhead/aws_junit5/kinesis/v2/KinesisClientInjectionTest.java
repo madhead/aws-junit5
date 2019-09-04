@@ -1,9 +1,11 @@
 package by.dev.madhead.aws_junit5.kinesis.v2;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
+import by.dev.madhead.aws_junit5.common.v2.AWSAdvancedConfiguration;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.kinesis.KinesisClient;
@@ -12,12 +14,20 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 @ExtendWith(Kinesis.class)
-@Disabled("AWS Java SDK 2.x does not work well with Kinesalite (part of localstack providing Kinesis API)")
 class KinesisClientInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
+    )
+    @AWSAdvancedConfiguration(
+        sdkHttpClientFactory = KinesisSdkHttpClientFactory.class
     )
     private KinesisClient client;
+
+    @BeforeEach
+    void disableCBOR() {
+        System.setProperty("aws.cborEnabled", "false");
+        System.setProperty("com.amazonaws.sdk.disableCbor", "true");
+    }
 
     @Test
     void test() throws Exception {
@@ -29,12 +39,19 @@ class KinesisClientInjectionTest {
                 .listStreams()
                 .streamNames()
                 .stream()
+                .filter(s -> !s.startsWith("__"))
                 .sorted()
                 .collect(Collectors.toList())
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    @AfterEach
+    void enableCBOR() {
+        System.setProperty("aws.cborEnabled", "true");
+        System.setProperty("com.amazonaws.sdk.disableCbor", "false");
+    }
+
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getenv("KINESIS_URL");

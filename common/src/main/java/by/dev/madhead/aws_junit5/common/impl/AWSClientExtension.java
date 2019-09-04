@@ -20,13 +20,12 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
     }
 
     private void inject(final Object testInstance, final Field field) throws Exception {
-        final AWSClient configuration = field.getAnnotation(AWSClient.class);
         final boolean accessible = field.isAccessible();
 
         try {
             field.setAccessible(true);
             if (supports(field)) {
-                field.set(testInstance, client(field, configuration));
+                field.set(testInstance, client(field));
             } else {
                 throw new IllegalArgumentException(
                     field.getType() + " is not supported by " + this.getClass().getSimpleName() + " extension."
@@ -37,7 +36,17 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
         }
     }
 
+    /**
+     * Return whether this extension is able to inject the {@code field}.
+     *
+     * @return whether this extension is able to inject the {@code field}.
+     */
     abstract protected boolean supports(final Field field);
 
-    abstract protected Object client(final Field field, final AWSClient configuration) throws Exception;
+    /**
+     * Return an object to inject in the {@code field}.
+     *
+     * @return an object to inject in the {@code field}.
+     */
+    abstract protected Object client(final Field field) throws Exception;
 }

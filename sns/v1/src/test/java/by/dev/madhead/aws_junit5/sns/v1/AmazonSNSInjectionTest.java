@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.sns.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.sns.AmazonSNS;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(SNS.class)
 class AmazonSNSInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private AmazonSNS client;
 
@@ -24,7 +24,7 @@ class AmazonSNSInjectionTest {
         // );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getenv("SNS_URL");

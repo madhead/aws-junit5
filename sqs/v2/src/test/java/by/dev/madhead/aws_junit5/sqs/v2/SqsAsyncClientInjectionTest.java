@@ -1,7 +1,7 @@
 package by.dev.madhead.aws_junit5.sqs.v2;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @ExtendWith(SQS.class)
 class SqsAsyncClientInjectionTest {
     @AWSClient(
-        clientConfiguration = ClientConfiguration.class
+        endpoint = Endpoint.class
     )
     private SqsAsyncClient client;
 
@@ -33,7 +33,7 @@ class SqsAsyncClientInjectionTest {
         );
     }
 
-    public static class ClientConfiguration implements AWSClientConfiguration {
+    public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
             return System.getProperty("sqs.url");

@@ -1,6 +1,5 @@
 package by.dev.madhead.aws_junit5.ses.v2;
 
-import by.dev.madhead.aws_junit5.common.AWSClient;
 import by.dev.madhead.aws_junit5.common.impl.AWSClientExtension;
 import by.dev.madhead.aws_junit5.common.v2.AWSClientFactory;
 import software.amazon.awssdk.services.ses.SesAsyncClient;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Use {@code SNS} to extend tests with fields that are subjects for SNS injection.
+ * Use {@link SES} to extend tests with fields that are subjects for SES injection.
  */
 public class SES extends AWSClientExtension {
     private final static Map<Class, AWSClientFactory> factories;
@@ -28,7 +27,7 @@ public class SES extends AWSClientExtension {
     }
 
     @Override
-    protected Object client(final Field field, AWSClient configuration) throws Exception {
-        return factories.get(field.getType()).createClient(configuration);
+    protected Object client(final Field field) throws Exception {
+        return factories.get(field.getType()).client(field);
     }
 }

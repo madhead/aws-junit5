@@ -1,13 +1,24 @@
 package by.dev.madhead.aws_junit5.common.v1;
 
 import by.dev.madhead.aws_junit5.common.AWSClient;
-import by.dev.madhead.aws_junit5.common.AWSClientConfiguration;
+import by.dev.madhead.aws_junit5.common.AWSEndpoint;
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.util.StringUtils;
 
-public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> implements by.dev.madhead.aws_junit5.common.AWSClientFactory<T> {
+import java.lang.reflect.Field;
+
+/**
+ * Creates AWS Java SDK v 1.x clients of type {@link T}.
+ *
+ * @param <S>
+ *     the type of an {@link AwsClientBuilder}, who actually creates AWS clients of type {@link T}.
+ * @param <T>
+ *     the type of AWS clients this factory creates.
+ */
+public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> implements by.dev.madhead.aws_junit5.common.impl.AWSClientFactory<T> {
     private final AwsClientBuilder<S, T> awsClientBuilder;
 
     public AWSClientFactory(final AwsClientBuilder<S, T> awsClientBuilder) {
@@ -15,27 +26,38 @@ public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> impleme
     }
 
     @Override
-    public T createClient(final AWSClient configuration) throws Exception {
-        final AWSClientConfiguration clientConfiguration = configuration.clientConfiguration().newInstance();
+    public T client(final Field field) throws Exception {
+        final AWSClient awsClientAnnotation = field.getAnnotation(AWSClient.class);
+        final AWSEndpoint endpoint = awsClientAnnotation.endpoint().newInstance();
 
-        validate(clientConfiguration);
+        validate(endpoint);
 
-        return awsClientBuilder
+        final S awsClientBuilder = this.awsClientBuilder
             .withEndpointConfiguration(
                 new AwsClientBuilder.EndpointConfiguration(
-                    clientConfiguration.url(),
-                    clientConfiguration.region()
+                    endpoint.url(),
+                    endpoint.region()
                 )
             )
             .withCredentials(
                 new AWSStaticCredentialsProvider(
-                    new BasicAWSCredentials(clientConfiguration.accessKey(), clientConfiguration.secretKey())
+                    new BasicAWSCredentials(endpoint.accessKey(), endpoint.secretKey())
                 )
-            )
-            .build();
+            );
+
+        if (field.isAnnotationPresent(AWSAdvancedConfiguration.class)) {
+            final AWSAdvancedConfiguration awsAdvancedConfiguration = field.getAnnotation(AWSAdvancedConfiguration.class);
+            final ClientConfiguration clientConfiguration = awsAdvancedConfiguration.clientConfigurationFactory().newInstance().create();
+
+            if (clientConfiguration != null) {
+                awsClientBuilder.withClientConfiguration(clientConfiguration);
+            }
+        }
+
+        return awsClientBuilder.build();
     }
 
-    private void validate(final AWSClientConfiguration clientConfiguration) {
+    private void validate(final AWSEndpoint clientConfiguration) {
         if (StringUtils.isNullOrEmpty(clientConfiguration.url())) {
             throw new IllegalArgumentException("Missing URL");
         }

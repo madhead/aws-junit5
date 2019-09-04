@@ -9,4 +9,6 @@ dependencies {
     testImplementation("software.amazon.awssdk:sns")
     testImplementation("software.amazon.awssdk:sqs")
     testImplementation("software.amazon.awssdk:ses")
+    testImplementation("software.amazon.awssdk:netty-nio-client")
+    testImplementation("software.amazon.awssdk:apache-client")
 }

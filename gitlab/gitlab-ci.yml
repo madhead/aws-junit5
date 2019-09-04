@@ -1,6 +1,7 @@
 variables:
   SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs
   AWS_CBOR_DISABLE: 'true'
+  CBOR_ENABLED: 'false'
 
 stages:
   - test
