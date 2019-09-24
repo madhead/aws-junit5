@@ -11,6 +11,7 @@ import software.amazon.awssdk.services.s3.model.Bucket;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+//tag::usage[]
 @ExtendWith(S3.class)
 class S3ClientInjectionTest {
     @AWSClient(
@@ -33,6 +34,7 @@ class S3ClientInjectionTest {
                 .collect(Collectors.toList())
         );
     }
+    //end::usage[]
 
     public static class Endpoint implements AWSEndpoint {
         @Override

@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @ExtendWith(Kinesis.class)
 @Disabled("AWS Java SDK 2.x does not work well with Kinesalite (part of localstack providing Kinesis API)")
 class KinesisAsyncClientInjectionTest {
+    //tag::usage[]
     @AWSClient(
         endpoint = Endpoint.class
     )
@@ -20,6 +21,7 @@ class KinesisAsyncClientInjectionTest {
         sdkAsyncHttpClientFactory = KinesisSdkAsyncHttpClientFactory.class
     )
     private KinesisAsyncClient client;
+    //end::usage[]
 
     @BeforeEach
     void disableCBOR() {

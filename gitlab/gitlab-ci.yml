@@ -1,7 +1,9 @@
+#tag::variables[]
 variables:
   SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs
   AWS_CBOR_DISABLE: 'true'
   CBOR_ENABLED: 'false'
+#end::variables[]
 
 stages:
   - test
@@ -14,9 +16,11 @@ stages:
     paths:
       - .gradle/wrapper
       - .gradle/caches
+  #tag::services[]
   services:
     - name: localstack/localstack
       alias: localstack
+  #end::services[]
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - export GRADLE_OPTS='-Dorg.gradle.daemon=false'
@@ -33,8 +37,10 @@ stages:
     - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4570; do sleep 1; done'
     - dynamo/seed/seed.sh
 
+    #tag::seed[]
     - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4572; do sleep 1; done'
     - s3/seed/seed.sh
+    #end::seed[]
 
     - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4568; do sleep 1; done'
     - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4573; do sleep 1; done'
@@ -122,3 +128,18 @@ bintray:
   only:
     - master
   dependencies: []
+
+pages:
+  stage: publish
+  image: openjdk:8
+  script:
+    - ./gradlew javadocs asciidoctor
+    - mkdir public
+    - cp -r build/docs/javadoc public/javadoc
+    - cp -r build/docs/asciidoc public/asciidoc
+  only:
+    - master
+  dependencies: []
+  artifacts:
+    paths:
+      - public

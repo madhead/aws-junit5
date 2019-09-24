@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+//tag::usage[]
 @ExtendWith(DynamoDB.class)
 class AmazonDynamoDBInjectionTest {
     @AWSClient(
@@ -26,7 +27,9 @@ class AmazonDynamoDBInjectionTest {
             client.listTables().getTableNames().stream().sorted().collect(Collectors.toList())
         );
     }
+    //end::usage[]
 
+    //tag::endpoint[]
     public static class Endpoint implements AWSEndpoint {
         @Override
         public String url() {
@@ -48,4 +51,5 @@ class AmazonDynamoDBInjectionTest {
             return System.getenv("DYNAMODB_SECRET_KEY");
         }
     }
+    //end::endpoint[]
 }
