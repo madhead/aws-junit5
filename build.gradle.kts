@@ -67,27 +67,15 @@ configure(
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 
+    configure<JavaPluginExtension> {
+        withJavadocJar()
+        withSourcesJar()
+    }
+
     configure<PublishingExtension> {
         publications {
             val main by creating(MavenPublication::class) {
                 from(components["java"])
-
-                val sourcesJar by tasks.creating(Jar::class) {
-                    val sourceSets: SourceSetContainer by project
-
-                    from(sourceSets["main"].allJava)
-                    archiveClassifier.set("sources")
-                }
-
-                val javadocJar by tasks.creating(Jar::class) {
-                    val javadoc by tasks
-
-                    from(javadoc)
-                    archiveClassifier.set("javadoc")
-                }
-
-                artifact(sourcesJar)
-                artifact(javadocJar)
             }
         }
     }
