@@ -5,15 +5,9 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
 
 plugins {
-    id("com.gradle.build-scan").version("2.3")
     id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
     id("com.jfrog.bintray").version("1.8.4").apply(false)
     id("org.asciidoctor.jvm.convert").version("3.0.0-alpha.3")
-}
-
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
 }
 
 repositories {
@@ -73,27 +67,15 @@ configure(
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 
+    configure<JavaPluginExtension> {
+        withJavadocJar()
+        withSourcesJar()
+    }
+
     configure<PublishingExtension> {
         publications {
             val main by creating(MavenPublication::class) {
                 from(components["java"])
-
-                val sourcesJar by tasks.creating(Jar::class) {
-                    val sourceSets: SourceSetContainer by project
-
-                    from(sourceSets["main"].allJava)
-                    archiveClassifier.set("sources")
-                }
-
-                val javadocJar by tasks.creating(Jar::class) {
-                    val javadoc by tasks
-
-                    from(javadoc)
-                    archiveClassifier.set("javadoc")
-                }
-
-                artifact(sourcesJar)
-                artifact(javadocJar)
             }
         }
     }

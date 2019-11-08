@@ -1,3 +1,7 @@
+plugins {
+    id("com.gradle.enterprise").version("3.0")
+}
+
 rootProject.name = "aws-junit5"
 
 include(
@@ -32,3 +36,10 @@ project(":sqs:v1").name = "sqs-v1"
 project(":sqs:v2").name = "sqs-v2"
 project(":ses:v1").name = "ses-v1"
 project(":ses:v2").name = "ses-v2"
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
