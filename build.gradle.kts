@@ -5,15 +5,9 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import java.util.Properties
 
 plugins {
-    id("com.gradle.build-scan").version("2.3")
     id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
     id("com.jfrog.bintray").version("1.8.4").apply(false)
     id("org.asciidoctor.jvm.convert").version("3.0.0-alpha.3")
-}
-
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
 }
 
 repositories {
