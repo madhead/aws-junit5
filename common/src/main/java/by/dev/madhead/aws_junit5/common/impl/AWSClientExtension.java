@@ -26,10 +26,6 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
             field.setAccessible(true);
             if (supports(field)) {
                 field.set(testInstance, client(field));
-            } else {
-                throw new IllegalArgumentException(
-                    field.getType() + " is not supported by " + this.getClass().getSimpleName() + " extension."
-                );
             }
         } finally {
             field.setAccessible(accessible);
