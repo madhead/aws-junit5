@@ -22,7 +22,7 @@ class AmazonSQSAsyncInjectionTest {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(
-            Collections.singletonList("http://localhost:4576/queue/queue"),
+            Collections.singletonList("http://localhost:4566/000000000000/queue"),
             client.listQueuesAsync().get().getQueueUrls().stream().sorted().collect(Collectors.toList())
         );
     }
