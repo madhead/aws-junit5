@@ -4,7 +4,7 @@ import java.util.Properties
 
 plugins {
     id("com.jfrog.bintray").version("1.8.5").apply(false)
-    id("org.asciidoctor.jvm.convert").version("3.2.0")
+    id("org.asciidoctor.jvm.convert").version("3.3.2")
 }
 
 repositories {
@@ -34,14 +34,14 @@ configure(
         val testImplementation by configurations
         val testRuntimeOnly by configurations
 
-        api(platform("org.junit:junit-bom:5.5.1"))
+        api(platform("org.junit:junit-bom:5.7.1"))
         api("org.junit.jupiter:junit-jupiter-api")
 
-        testImplementation(platform("org.junit:junit-bom:5.5.1"))
+        testImplementation(platform("org.junit:junit-bom:5.7.1"))
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testImplementation("org.junit.jupiter:junit-jupiter-params")
 
-        testRuntimeOnly(platform("org.junit:junit-bom:5.5.1"))
+        testRuntimeOnly(platform("org.junit:junit-bom:5.7.1"))
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 
@@ -75,7 +75,7 @@ configure(
     }
 
     configure<JacocoPluginExtension> {
-        toolVersion = "0.8.4"
+        toolVersion = "0.8.6"
     }
 
     tasks {
