@@ -12,12 +12,12 @@ In order to use an AWS service you basically need 4 essential parameters:
 Not all of them are required, for example https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html[DynamoDB Local] allows empty keys.
 But you are not locked to "fake" AWS implementations in your tests, you can use real endpoints as well.
 
-To provide these values you need to imlement https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
+To provide these values you need to imlement https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
 Tests could take the values from the environment or system variables, following the https://12factor.net/config[twelve-factor principles]:
 
 [source,java]
 ----
-include::../dynamo/v1/src/test/java/by/dev/madhead/aws_junit5/dynamo/v1/AmazonDynamoDBInjectionTest.java[tag=endpoint,indent=0]
+include::../dynamo/v1/src/test/java/me/madhead/aws_junit5/dynamo/v1/AmazonDynamoDBInjectionTest.java[tag=endpoint,indent=0]
 ----
 
 === Basic usage
@@ -25,11 +25,11 @@ include::../dynamo/v1/src/test/java/by/dev/madhead/aws_junit5/dynamo/v1/AmazonDy
 Annotate your test classes, eligible for clients injections, with a corresponding https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/extension/ExtendWith.html[extensions].
 For the list of supported extensions and clients refer to <<Dependency Metadata,dependency metadata>> section.
 
-Finally, put https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/AWSClient.html[`AWSClient`] annotation on the fields to be injected.
+Finally, put https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSClient.html[`AWSClient`] annotation on the fields to be injected.
 
 [source,java]
 ----
-include::../dynamo/v1/src/test/java/by/dev/madhead/aws_junit5/dynamo/v1/AmazonDynamoDBInjectionTest.java[tag=usage,indent=0]
+include::../dynamo/v1/src/test/java/me/madhead/aws_junit5/dynamo/v1/AmazonDynamoDBInjectionTest.java[tag=usage,indent=0]
 }
 ----
 
@@ -40,29 +40,29 @@ For example, when you need to tune HTTP(s) protocol to change timeouts or trust 
 `@AWSAdvancedConfiguration` annotation can be used to provide them.
 Client configuration differs in AWS Java SDK v 1.x and 2.x, so there are two annotations with this name, one per AWS Java SDK major version.
 
-* https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html[`v1.AWSAdvancedConfiguration`]
+* https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html[`v1.AWSAdvancedConfiguration`]
 +
-Allows you to configure https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html[`ClientConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html[`ClientConfigurationFactory`].
-* https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html[`v2.AWSAdvancedConfiguration`]
+Allows you to configure https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html[`ClientConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html[`ClientConfigurationFactory`].
+* https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html[`v2.AWSAdvancedConfiguration`]
 +
 Allows you to configure:
 +
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html[`ClientOverrideConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html[`ClientOverrideConfigurationFactory`].
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html[`SdkHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html[`SdkHttpClientFactory`].
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html[`SdkAsyncHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html[`SdkAsyncHttpClientFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html[`ClientOverrideConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html[`ClientOverrideConfigurationFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html[`SdkHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html[`SdkHttpClientFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html[`SdkAsyncHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html[`SdkAsyncHttpClientFactory`].
 
 Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificats:
 
 [source,java]
 ----
-include::../kinesis/v2/src/test/java/by/dev/madhead/aws_junit5/kinesis/v2/KinesisSdkAsyncHttpClientFactory.java[tag=advanced_configuration,indent=0]
+include::../kinesis/v2/src/test/java/me/madhead/aws_junit5/kinesis/v2/KinesisSdkAsyncHttpClientFactory.java[tag=advanced_configuration,indent=0]
 ----
 
 And then use it:
 
 [source,java]
 ----
-include::../kinesis/v2/src/test/java/by/dev/madhead/aws_junit5/kinesis/v2/KinesisAsyncClientInjectionTest.java[tag=usage,indent=0]
+include::../kinesis/v2/src/test/java/me/madhead/aws_junit5/kinesis/v2/KinesisAsyncClientInjectionTest.java[tag=usage,indent=0]
 ----
 
 === [Bonus]: CI with GitLab
@@ -120,7 +120,7 @@ Everything is ready to be tested now:
 .S3ClientInjectionTest.java
 [source,java]
 ----
-include::../s3/v2/src/test/java/by/dev/madhead/aws_junit5/s3/v2/S3ClientInjectionTest.java[tag=usage,indent=0]
+include::../s3/v2/src/test/java/me/madhead/aws_junit5/s3/v2/S3ClientInjectionTest.java[tag=usage,indent=0]
 }
 ----
 
