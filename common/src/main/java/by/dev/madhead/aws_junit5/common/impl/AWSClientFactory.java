@@ -12,8 +12,11 @@ public interface AWSClientFactory<T> {
     /**
      * Return an object to inject in the {@code field}.
      *
+     * @param field
+     *     a field to inject into.
      * @return an object to inject in the {@code field}.
      * @throws Exception
+     *     when something went wrong.
      */
     T client(final Field field) throws Exception;
 }

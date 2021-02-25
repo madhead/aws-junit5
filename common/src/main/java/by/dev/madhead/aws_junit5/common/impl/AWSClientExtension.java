@@ -35,6 +35,8 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
     /**
      * Return whether this extension is able to inject the {@code field}.
      *
+     * @param field
+     *     a field to inject into.
      * @return whether this extension is able to inject the {@code field}.
      */
     abstract protected boolean supports(final Field field);
@@ -42,7 +44,11 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
     /**
      * Return an object to inject in the {@code field}.
      *
+     * @param field
+     *     a field to inject into.
      * @return an object to inject in the {@code field}.
+     * @throws Exception
+     *     when something went wrong.
      */
     abstract protected Object client(final Field field) throws Exception;
 }
