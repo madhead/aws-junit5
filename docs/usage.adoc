@@ -93,8 +93,7 @@ include::../gitlab/gitlab-ci.yml[tag=variables,indent=0]
 ----
 
 Before running the test, some seed data needs to be initialized.
-And before the data can be initialized, you need to be sure that the corresponding service is started.
-Here is how it looks for S3:
+Here is how it may look like for S3:
 
 .gitlab-ci.yml
 [source,yml]
@@ -106,8 +105,6 @@ job:
 include::../gitlab/gitlab-ci.yml[tag=seed]
 …
 ----
-
-First, we wait 120 seconds for S3 to be up and running and then seed it using a script:
 
 .s3/seed/seed.sh
 [source,shell]
