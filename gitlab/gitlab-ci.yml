@@ -120,7 +120,7 @@ OSSRH:
   stage: publish
   image: openjdk:8
   script:
-    - ./gradlew publish
+    - ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
   only:
     - master
   dependencies: [ ]
