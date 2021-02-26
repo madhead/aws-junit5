@@ -1,14 +1,11 @@
-import com.jfrog.bintray.gradle.BintrayExtension
-import com.jfrog.bintray.gradle.BintrayPlugin
 import java.util.Properties
 
 plugins {
-    id("com.jfrog.bintray").version("1.8.5").apply(false)
-    id("org.asciidoctor.jvm.convert").version("3.2.0")
+    id("org.asciidoctor.jvm.convert").version("3.3.2")
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 configure(
@@ -22,11 +19,11 @@ configure(
 ) {
     apply<JavaLibraryPlugin>()
     apply<JacocoPlugin>()
+    apply<SigningPlugin>()
     apply<MavenPublishPlugin>()
-    apply<BintrayPlugin>()
 
     repositories {
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -34,14 +31,14 @@ configure(
         val testImplementation by configurations
         val testRuntimeOnly by configurations
 
-        api(platform("org.junit:junit-bom:5.5.1"))
+        api(platform("org.junit:junit-bom:5.7.1"))
         api("org.junit.jupiter:junit-jupiter-api")
 
-        testImplementation(platform("org.junit:junit-bom:5.5.1"))
+        testImplementation(platform("org.junit:junit-bom:5.7.1"))
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testImplementation("org.junit.jupiter:junit-jupiter-params")
 
-        testRuntimeOnly(platform("org.junit:junit-bom:5.5.1"))
+        testRuntimeOnly(platform("org.junit:junit-bom:5.7.1"))
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 
@@ -50,32 +47,56 @@ configure(
         withSourcesJar()
     }
 
+    configure<SigningExtension> {
+        val key = System.getenv("SIGNING_KEY") ?: return@configure
+        val password = System.getenv("SIGNING_PASSWORD") ?: return@configure
+        val publishing: PublishingExtension by project
+
+        useInMemoryPgpKeys(key, password)
+        sign(publishing.publications)
+    }
+
     configure<PublishingExtension> {
         publications {
             val main by creating(MavenPublication::class) {
                 from(components["java"])
+
+                pom {
+                    licenses {
+                        license {
+                            name.set("MIT")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("madhead")
+                            name.set("Siarhei Krukau")
+                            email.set("siarhei.krukau@gmail.com")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:git@github.com:madhead/aws-junit5.git")
+                        developerConnection.set("scm:git:git@gitlab.com:madhead/aws-junit5.git")
+                        url.set("https://github.com/madhead/aws-junit5")
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "OSSRH"
+                setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+                credentials {
+                    username = System.getenv("OSSRH_USER") ?: return@credentials
+                    password = System.getenv("OSSRH_PASSWORD") ?: return@credentials
+                }
             }
         }
     }
 
-    configure<BintrayExtension> {
-        user = System.getenv("BINTRAY_USER")
-        key = System.getenv("BINTRAY_KEY")
-        publish = true
-        setPublications("main")
-        pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
-            repo = "maven"
-            name = "${project.group}:${project.name}"
-            setLicenses("MIT")
-            vcsUrl = "https://gitlab.com/madhead/aws-junit5"
-            version(delegateClosureOf<BintrayExtension.VersionConfig> {
-                name = project.version.toString()
-            })
-        })
-    }
-
     configure<JacocoPluginExtension> {
-        toolVersion = "0.8.4"
+        toolVersion = "0.8.6"
     }
 
     tasks {

@@ -1,6 +1,6 @@
 #tag::variables[]
 variables:
-  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs
+  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
   AWS_CBOR_DISABLE: 'true'
   CBOR_ENABLED: 'false'
 #end::variables[]
@@ -28,32 +28,20 @@ stages:
     - source gitlab/test.env
 
     - yum -y install unzip || true
+    - microdnf install unzip || true
 
-    - curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o /tmp/awscli-bundle.zip
-    - unzip /tmp/awscli-bundle.zip -d /tmp/awscli-bundle
-    - /tmp/awscli-bundle/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+    - curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscli.zip
+    - unzip /tmp/awscli.zip -d /tmp/awscli
+    - /tmp/awscli/aws/install
 
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4569; do sleep 1; done'
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4570; do sleep 1; done'
     - dynamo/seed/seed.sh
-
     #tag::seed[]
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4572; do sleep 1; done'
     - s3/seed/seed.sh
     #end::seed[]
-
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4568; do sleep 1; done'
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4573; do sleep 1; done'
     - kinesis/seed/seed.sh
-
-    # - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4575; do sleep 1; done'
-    # - sns/seed/seed.sh
-
-    - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4576; do sleep 1; done'
+    - sns/seed/seed.sh
     - sqs/seed/seed.sh
-
-    # - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4579; do sleep 1; done'
-    # - ses/seed/seed.sh
+    - ses/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace --scan
   artifacts:
@@ -91,6 +79,14 @@ unit@openjdk:13:
   extends: .unit
   image: openjdk:13
 
+unit@openjdk:14:
+  extends: .unit
+  image: openjdk:14
+
+unit@openjdk:15:
+  extends: .unit
+  image: openjdk:15
+
 unit@openjdk:8-latest-aws-sdk:
   extends: .unit
   image: openjdk:8
@@ -120,14 +116,14 @@ copyright:
     - '[[ $copyright_year == $current_year ]]'
   allow_failure: true
 
-bintray:
+OSSRH:
   stage: publish
   image: openjdk:8
   script:
-    - ./gradlew bintrayUpload
+    - ./gradlew publish
   only:
     - master
-  dependencies: []
+  dependencies: [ ]
 
 pages:
   stage: publish
@@ -139,7 +135,7 @@ pages:
     - cp -r build/docs/asciidoc public/asciidoc
   only:
     - master
-  dependencies: []
+  dependencies: [ ]
   artifacts:
     paths:
       - public

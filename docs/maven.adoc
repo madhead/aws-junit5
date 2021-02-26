@@ -1,8 +1,8 @@
 == Dependency Metadata
 
-Artifacts are deployed to https://bintray.com/bintray/jcenter[JCenter].
+Artifacts are deployed to https://search.maven.org[Maven Central Repository].
 
-* *Group ID*: `by.dev.madhead.aws-junit5`
+* *Group ID*: `me.madhead.aws-junit5`
 * *Version*: `{revnumber}`
 * *Artifacts*:
 ** `dynamo-v1`
@@ -47,130 +47,92 @@ Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amaz
 [source,kotlin,subs=attributes+]
 ----
 repositories {
-    // Add the JCenter if you don't use it already
-    jcenter()
+    // Add Maven Central Repository if you don't use it already
+    mavenCentral()
 }
 
 dependencies {
     // Choose the dependencies you need
-    testImplementation("by.dev.madhead.aws-junit5:dynamo-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:dynamo-v2:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:s3-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:s3-v2:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:kinesis-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:kinesis-v2:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:sns-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:sns-v2:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:sqs-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:sqs-v2:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:ses-v1:{revnumber}")
-    testImplementation("by.dev.madhead.aws-junit5:ses-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:dynamo-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:dynamo-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:s3-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:s3-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:kinesis-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:kinesis-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:sns-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:sns-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:sqs-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:sqs-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:ses-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:ses-v2:{revnumber}")
 }
 ----
 
 === Maven
 
-JCenter repository must be added.
-They recommend to use `settings.xml` for that:
-
-.settings.xml
-[source,xml,subs=attributes+]
-----
-<settings>
-    <profiles>
-        <profile>
-            <repositories>
-                <repository>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                    <id>central</id>
-                    <name>bintray</name>
-                    <url>https://jcenter.bintray.com</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                    <id>central</id>
-                    <name>bintray-plugins</name>
-                    <url>https://jcenter.bintray.com</url>
-                </pluginRepository>
-            </pluginRepositories>
-            <id>bintray</id>
-        </profile>
-    </profiles>
-    <activeProfiles>
-        <activeProfile>bintray</activeProfile>
-    </activeProfiles>
-</settings>
-----
-
-Then specify the dependencies you need as usual:
+Specify the dependencies you need as usual:
 
 .pom.xml
 [source,xml,subs=attributes+]
 ----
 <dependencies>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>dynamo-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>dynamo-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>s3-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>s3-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>kinesis-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>kinesis-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>sns-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>sns-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>sqs-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>sqs-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>ses-v1</artifactId>
     <version>{revnumber}</version>
 </dependency>
 <dependency>
-    <groupId>by.dev.madhead.aws-junit5</groupId>
+    <groupId>me.madhead.aws-junit5</groupId>
     <artifactId>ses-v2</artifactId>
     <version>{revnumber}</version>
 </dependency>
