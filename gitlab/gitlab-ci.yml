@@ -116,11 +116,11 @@ copyright:
     - '[[ $copyright_year == $current_year ]]'
   allow_failure: true
 
-bintray:
+OSSRH:
   stage: publish
   image: openjdk:8
   script:
-    - ./gradlew bintrayUpload
+    - ./gradlew publish
   only:
     - master
   dependencies: [ ]
