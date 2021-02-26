@@ -28,10 +28,11 @@ stages:
     - source gitlab/test.env
 
     - yum -y install unzip || true
+    - microdnf install unzip || true
 
-    - curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o /tmp/awscli-bundle.zip
-    - unzip /tmp/awscli-bundle.zip -d /tmp/awscli-bundle
-    - /tmp/awscli-bundle/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+    - curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscli.zip
+    - unzip /tmp/awscli.zip -d /tmp/awscli
+    - /tmp/awscli/aws/install
 
     #tag::seed[]
     - timeout 120 bash -c 'until echo > /dev/tcp/localstack/4566; do sleep 1; done'
@@ -78,6 +79,14 @@ unit@openjdk:12:
 unit@openjdk:13:
   extends: .unit
   image: openjdk:13
+
+unit@openjdk:14:
+  extends: .unit
+  image: openjdk:14
+
+unit@openjdk:15:
+  extends: .unit
+  image: openjdk:15
 
 unit@openjdk:8-latest-aws-sdk:
   extends: .unit
