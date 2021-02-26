@@ -2,10 +2,20 @@ import java.util.Properties
 
 plugins {
     id("org.asciidoctor.jvm.convert").version("3.3.2")
+    id("io.github.gradle-nexus.publish-plugin").version("1.0.0")
 }
 
 repositories {
     mavenCentral()
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username.set(System.getenv("OSSRH_USER") ?: return@sonatype)
+            password.set(System.getenv("OSSRH_PASSWORD") ?: return@sonatype)
+        }
+    }
 }
 
 configure(
@@ -83,16 +93,6 @@ configure(
                         developerConnection.set("scm:git:git@gitlab.com:madhead/aws-junit5.git")
                         url.set("https://github.com/madhead/aws-junit5")
                     }
-                }
-            }
-        }
-        repositories {
-            maven {
-                name = "OSSRH"
-                setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-                credentials {
-                    username = System.getenv("OSSRH_USER") ?: return@credentials
-                    password = System.getenv("OSSRH_PASSWORD") ?: return@credentials
                 }
             }
         }
