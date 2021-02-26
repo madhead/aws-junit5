@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.ses.SesClient;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 @ExtendWith(SES.class)
 class SesClientInjectionTest {
     @AWSClient(
@@ -18,15 +21,15 @@ class SesClientInjectionTest {
     void test() throws Exception {
         Assertions.assertNotNull(client);
 
-        // Assertions.assertEquals(
-        //     Collections.singletonList("topic"),
-        //     client
-        //         .listIdentities()
-        //         .identities()
-        //         .stream()
-        //         .sorted()
-        //         .collect(Collectors.toList())
-        // );
+        Assertions.assertEquals(
+            Collections.singletonList("madhead@madhead.me"),
+            client
+                .listIdentities()
+                .identities()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList())
+        );
     }
 
     public static class Endpoint implements AWSEndpoint {

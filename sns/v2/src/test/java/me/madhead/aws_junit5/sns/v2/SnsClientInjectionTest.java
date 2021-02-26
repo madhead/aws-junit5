@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sns.model.Topic;
+
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 @ExtendWith(SNS.class)
 class SnsClientInjectionTest {
@@ -18,16 +22,16 @@ class SnsClientInjectionTest {
     void test() throws Exception {
         Assertions.assertNotNull(client);
 
-        // Assertions.assertEquals(
-        //     Collections.singletonList("topic"),
-        //     client
-        //         .listTopics()
-        //         .topics()
-        //         .stream()
-        //         .map(Topic::topicArn)
-        //         .sorted()
-        //         .collect(Collectors.toList())
-        // );
+        Assertions.assertEquals(
+            Collections.singletonList("arn:aws:sns:us-east-1:000000000000:topic"),
+            client
+                .listTopics()
+                .topics()
+                .stream()
+                .map(Topic::topicArn)
+                .sorted()
+                .collect(Collectors.toList())
+        );
     }
 
     public static class Endpoint implements AWSEndpoint {

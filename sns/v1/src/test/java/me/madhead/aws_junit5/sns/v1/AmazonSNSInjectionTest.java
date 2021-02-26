@@ -1,11 +1,15 @@
 package me.madhead.aws_junit5.sns.v1;
 
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.model.Topic;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
-import com.amazonaws.services.sns.AmazonSNS;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 @ExtendWith(SNS.class)
 class AmazonSNSInjectionTest {
@@ -18,10 +22,10 @@ class AmazonSNSInjectionTest {
     void test() throws Exception {
         Assertions.assertNotNull(client);
 
-        // Assertions.assertEquals(
-        //     Collections.singletonList("topic"),
-        //     client.listTopics().getTopics().stream().map(Topic::getTopicArn).sorted().collect(Collectors.toList())
-        // );
+        Assertions.assertEquals(
+            Collections.singletonList("arn:aws:sns:us-east-1:000000000000:topic"),
+            client.listTopics().getTopics().stream().map(Topic::getTopicArn).sorted().collect(Collectors.toList())
+        );
     }
 
     public static class Endpoint implements AWSEndpoint {

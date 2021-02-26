@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 @ExtendWith(SES.class)
 class AmazonSimpleEmailServiceInjectionTest {
     @AWSClient(
@@ -18,10 +21,10 @@ class AmazonSimpleEmailServiceInjectionTest {
     void test() throws Exception {
         Assertions.assertNotNull(client);
 
-        // Assertions.assertEquals(
-        //     Collections.singletonList("topic"),
-        //     client.listIdentities().getIdentities().stream().sorted().collect(Collectors.toList())
-        // );
+        Assertions.assertEquals(
+            Collections.singletonList("madhead@madhead.me"),
+            client.listIdentities().getIdentities().stream().sorted().collect(Collectors.toList())
+        );
     }
 
     public static class Endpoint implements AWSEndpoint {

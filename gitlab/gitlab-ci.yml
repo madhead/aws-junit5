@@ -1,6 +1,6 @@
 #tag::variables[]
 variables:
-  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs
+  SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
   AWS_CBOR_DISABLE: 'true'
   CBOR_ENABLED: 'false'
 #end::variables[]
@@ -40,9 +40,9 @@ stages:
     #end::seed[]
     - s3/seed/seed.sh
     - kinesis/seed/seed.sh
-    # - sns/seed/seed.sh
+    - sns/seed/seed.sh
     - sqs/seed/seed.sh
-    # - ses/seed/seed.sh
+    - ses/seed/seed.sh
   script:
     - &unit ./gradlew test jacocoTestReport --stacktrace --scan
   artifacts:

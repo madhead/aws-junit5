@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.ses.SesAsyncClient;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 @ExtendWith(SES.class)
 class SesAsyncClientInjectionTest {
     @AWSClient(
@@ -18,16 +21,16 @@ class SesAsyncClientInjectionTest {
     void test() throws Exception {
         Assertions.assertNotNull(client);
 
-        // Assertions.assertEquals(
-        //     Collections.singletonList("queue"),
-        //     client
-        //         .listIdentities()
-        //         .get()
-        //         .identities()
-        //         .stream()
-        //         .sorted()
-        //         .collect(Collectors.toList())
-        // );
+        Assertions.assertEquals(
+            Collections.singletonList("madhead@madhead.me"),
+            client
+                .listIdentities()
+                .get()
+                .identities()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList())
+        );
     }
 
     public static class Endpoint implements AWSEndpoint {
