@@ -62,6 +62,9 @@ configure(
                 from(components["java"])
 
                 pom {
+                    name.set("aws-junit5 :: ${project.name}")
+                    description.set("aws-junit5 :: ${project.name}")
+                    url.set("https://github.com/madhead/aws-junit5")
                     licenses {
                         license {
                             name.set("MIT")
