@@ -44,6 +44,7 @@ jobs:
     env:
       ME_MADHEAD_AWS_JUNIT5_USE_LATEST_AWS_SDK: ${{ matrix.latest-aws-sdk }}
       CBOR_ENABLED: false
+    #tag::services[]
     services:
       localstack:
         image: localstack/localstack
@@ -51,6 +52,7 @@ jobs:
           - 4566:4566
         env:
           SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
+    #end::services[]
     steps:
       - uses: actions/checkout@v2
 
@@ -64,6 +66,7 @@ jobs:
       - run: |
           cat .github/workflows/test.env >> $GITHUB_ENV
 
+      #tag::seed[]
       - run: |
           dynamo/seed/seed.sh
           s3/seed/seed.sh
@@ -71,6 +74,7 @@ jobs:
           sns/seed/seed.sh
           sqs/seed/seed.sh
           ses/seed/seed.sh
+      #end::seed[]
 
       - uses: gradle/gradle-build-action@v2
         with:

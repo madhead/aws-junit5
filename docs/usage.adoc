@@ -12,7 +12,7 @@ In order to use an AWS service you basically need 4 essential parameters:
 Not all of them are required, for example https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html[DynamoDB Local] allows empty keys.
 But you are not locked to "fake" AWS implementations in your tests, you can use real endpoints as well.
 
-To provide these values you need to imlement https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
+To provide these values you need to imlement https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
 Tests could take the values from the environment or system variables, following the https://12factor.net/config[twelve-factor principles]:
 
 [source,java]
@@ -25,7 +25,7 @@ include::../dynamo/v1/src/test/java/me/madhead/aws_junit5/dynamo/v1/AmazonDynamo
 Annotate your test classes, eligible for clients injections, with a corresponding https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/extension/ExtendWith.html[extensions].
 For the list of supported extensions and clients refer to <<Dependency Metadata,dependency metadata>> section.
 
-Finally, put https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSClient.html[`AWSClient`] annotation on the fields to be injected.
+Finally, put https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSClient.html[`AWSClient`] annotation on the fields to be injected.
 
 [source,java]
 ----
@@ -40,16 +40,16 @@ For example, when you need to tune HTTP(s) protocol to change timeouts or trust 
 `@AWSAdvancedConfiguration` annotation can be used to provide them.
 Client configuration differs in AWS Java SDK v 1.x and 2.x, so there are two annotations with this name, one per AWS Java SDK major version.
 
-* https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html[`v1.AWSAdvancedConfiguration`]
+* https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html[`v1.AWSAdvancedConfiguration`]
 +
-Allows you to configure https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html[`ClientConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html[`ClientConfigurationFactory`].
-* https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html[`v2.AWSAdvancedConfiguration`]
+Allows you to configure https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html[`ClientConfiguration`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html[`ClientConfigurationFactory`].
+* https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html[`v2.AWSAdvancedConfiguration`]
 +
 Allows you to configure:
 +
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html[`ClientOverrideConfiguration`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html[`ClientOverrideConfigurationFactory`].
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html[`SdkHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html[`SdkHttpClientFactory`].
-** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html[`SdkAsyncHttpClient`] by implementing https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html[`SdkAsyncHttpClientFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html[`ClientOverrideConfiguration`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html[`ClientOverrideConfigurationFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html[`SdkHttpClient`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html[`SdkHttpClientFactory`].
+** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html[`SdkAsyncHttpClient`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html[`SdkAsyncHttpClientFactory`].
 
 Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificats:
 
@@ -65,45 +65,30 @@ And then use it:
 include::../kinesis/v2/src/test/java/me/madhead/aws_junit5/kinesis/v2/KinesisAsyncClientInjectionTest.java[tag=usage,indent=0]
 ----
 
-=== [Bonus]: CI with GitLab
+=== [Bonus]: CI with GitHub
 
-https://gitlab.com/madhead/aws-junit5[This projects] itself has tests.
-It uses https://github.com/localstack/localstack[localstack] to mock AWS services.
+https://github.com/madhead/aws-junit5[This projects] itself has tests.
+It uses https://github.com/localstack/localstack[LocalStack] to mock AWS services.
 Here is how it works.
 
 First, you need to tell your CI server to start localstack whenever it runs tests.
-GitLab https://docs.gitlab.com/ee/ci/services/README.html[uses `services` keyword] in a job description:
+GitHub https://docs.github.com/en/actions/using-containerized-services/about-service-containers[uses `services` keyword] in a job description:
 
-.gitlab-ci.yml
+.workflow.yml
 [source,yml]
 ----
-job:
-…
-include::../gitlab/gitlab-ci.yml[tag=services]
-…
+include::../.github/workflows/default.yml[tag=services,indent=0]
 ----
 
-localstack with start services listed in the `SERVICES` environment variable, so I https://docs.gitlab.com/ee/ci/yaml/README.html#variables[define] them in the CI config as well:
-
-.gitlab-ci.yml
-[source,yml]
-----
-include::../gitlab/gitlab-ci.yml[tag=variables,indent=0]
-…
-----
+LocalStack will start services listed in the `SERVICES` environment variable.
 
 Before running the test, some seed data needs to be initialized.
 Here is how it may look like for S3:
 
-.gitlab-ci.yml
+.workflow.yml
 [source,yml]
 ----
-job:
-…
-  before_script:
-…
-include::../gitlab/gitlab-ci.yml[tag=seed]
-…
+include::../.github/workflows/default.yml[tag=seed,indent=0]
 ----
 
 .s3/seed/seed.sh
