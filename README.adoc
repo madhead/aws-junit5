@@ -19,7 +19,7 @@ Currently these services are supported:
 
 == How do I use it?
 
-Read the https://madhead.gitlab.io/aws-junit5/asciidoc[documentation] or the https://madhead.gitlab.io/aws-junit5/javadoc[Javadoc].
+Read the https://madhead.github.io/aws-junit5/asciidoc[documentation] or the https://madhead.github.io/aws-junit5/javadoc[Javadoc].
 I tried to keep it short.
 
-https://gitlab.com/madhead/aws-junit5/issues/new[Submit an issue] in case of any questions, problems, proposals or requests.
+https://github.com/madhead/aws-junit5/issues/new[Submit an issue] in case of any questions, problems, proposals or requests.
