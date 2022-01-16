@@ -440,7 +440,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>aws-junit5</h1>
 <div class="details">
-<span id="revnumber">version 6.0.2</span>
+<span id="revnumber">version 6.0.3</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -457,7 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_providing_essential_parameters">3.1. Providing essential parameters</a></li>
 <li><a href="#_basic_usage">3.2. Basic usage</a></li>
 <li><a href="#_advanced_configuration">3.3. Advanced configuration</a></li>
-<li><a href="#_bonus_ci_with_gitlab">3.4. [Bonus]: CI with GitLab</a></li>
+<li><a href="#_bonus_ci_with_github">3.4. [Bonus]: CI with GitHub</a></li>
 </ul>
 </li>
 </ul>
@@ -511,7 +511,7 @@ Currently these services are supported:</p>
 <p><strong>Group ID</strong>: <code>me.madhead.aws-junit5</code></p>
 </li>
 <li>
-<p><strong>Version</strong>: <code>6.0.2</code></p>
+<p><strong>Version</strong>: <code>6.0.3</code></p>
 </li>
 <li>
 <p><strong>Artifacts</strong>:</p>
@@ -520,73 +520,73 @@ Currently these services are supported:</p>
 <li>
 <p><code>dynamo-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html"><code>AmazonDynamoDB</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBAsync.html"><code>AmazonDynamoDBAsync</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreams.html"><code>AmazonDynamoDBStreams</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreamsAsync.html"><code>AmazonDynamoDBStreamsAsync</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/dynamo/v1/DynamoDB.html"><code>DynamoDB</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html"><code>AmazonDynamoDB</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBAsync.html"><code>AmazonDynamoDBAsync</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreams.html"><code>AmazonDynamoDBStreams</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBStreamsAsync.html"><code>AmazonDynamoDBStreamsAsync</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/dynamo/v1/DynamoDB.html"><code>DynamoDB</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>dynamo-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbClient.html"><code>DynamoDbClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbAsyncClient.html"><code>DynamoDbAsyncClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsClient.html"><code>DynamoDbStreamsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsAsyncClient.html"><code>DynamoDbStreamsAsyncClient</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/dynamo/v2/DynamoDB.html"><code>DynamoDB</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbClient.html"><code>DynamoDbClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/DynamoDbAsyncClient.html"><code>DynamoDbAsyncClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsClient.html"><code>DynamoDbStreamsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/dynamodb/streams/DynamoDbStreamsAsyncClient.html"><code>DynamoDbStreamsAsyncClient</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/dynamo/v2/DynamoDB.html"><code>DynamoDB</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>s3-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html"><code>AmazonS3</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/s3/v1/S3.html"><code>S3</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html"><code>AmazonS3</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/s3/v1/S3.html"><code>S3</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>s3-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3Client.html"><code>S3Client</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3AsyncClient.html"><code>S3AsyncClient</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/s3/v2/S3.html"><code>S3</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3Client.html"><code>S3Client</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/s3/S3AsyncClient.html"><code>S3AsyncClient</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/s3/v2/S3.html"><code>S3</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>kinesis-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesis.html"><code>AmazonKinesis</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisAsync.html"><code>AmazonKinesisAsync</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehose.html"><code>AmazonKinesisFirehose</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehoseAsync.html"><code>AmazonKinesisFirehoseAsync</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/kinesis/v1/Kinesis.html"><code>Kinesis</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesis.html"><code>AmazonKinesis</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisAsync.html"><code>AmazonKinesisAsync</code></a>, <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehose.html"><code>AmazonKinesisFirehose</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesisfirehose/AmazonKinesisFirehoseAsync.html"><code>AmazonKinesisFirehoseAsync</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/kinesis/v1/Kinesis.html"><code>Kinesis</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>kinesis-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisClient.html"><code>KinesisClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisAsyncClient.html"><code>KinesisAsyncClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseClient.html"><code>FirehoseClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseAsyncClient.html"><code>FirehoseAsyncClient</code></a> via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/kinesis/v2/Kinesis.html"><code>Kinesis</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisClient.html"><code>KinesisClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/kinesis/KinesisAsyncClient.html"><code>KinesisAsyncClient</code></a>, <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseClient.html"><code>FirehoseClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/firehose/FirehoseAsyncClient.html"><code>FirehoseAsyncClient</code></a> via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/kinesis/v2/Kinesis.html"><code>Kinesis</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>sns-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNS.html"><code>AmazonSNS</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSAsync.html"><code>AmazonSNSAsync</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sns/v1/SNS.html"><code>SNS</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNS.html"><code>AmazonSNS</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSAsync.html"><code>AmazonSNSAsync</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/sns/v1/SNS.html"><code>SNS</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>sns-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsClient.html"><code>SnsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsAsyncClient.html"><code>SnsAsyncClient</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sns/v2/SNS.html"><code>SNS</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsClient.html"><code>SnsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sns/SnsAsyncClient.html"><code>SnsAsyncClient</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/sns/v2/SNS.html"><code>SNS</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>sqs-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQS.html"><code>AmazonSQS</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQSAsync.html"><code>AmazonSQSAsync</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sqs/v1/SQS.html"><code>SQS</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQS.html"><code>AmazonSQS</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sqs/AmazonSQSAsync.html"><code>AmazonSQSAsync</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/sqs/v1/SQS.html"><code>SQS</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>sqs-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsClient.html"><code>SqsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsAsyncClient.html"><code>SqsAsyncClient</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/sqs/v2/SQS.html"><code>SQS</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsClient.html"><code>SqsClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sqs/SqsAsyncClient.html"><code>SqsAsyncClient</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/sqs/v2/SQS.html"><code>SQS</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>ses-v1</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailService.html"><code>AmazonSimpleEmailService</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailServiceAsync.html"><code>AmazonSimpleEmailServiceAsync</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/ses/v1/SES.html"><code>SES</code></a> extension.</p>
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailService.html"><code>AmazonSimpleEmailService</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/simpleemail/AmazonSimpleEmailServiceAsync.html"><code>AmazonSimpleEmailServiceAsync</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/ses/v1/SES.html"><code>SES</code></a> extension.</p>
 </div>
 </li>
 <li>
 <p><code>ses-v2</code></p>
 <div class="paragraph">
-<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesAsyncClient</code></a>  via <a href="https://madhead.gitlab.io/aws-junit5/javadoc/by/dev/madhead/aws_junit5/ses/v2/SES.html"><code>SES</code></a> extension.</p>
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesAsyncClient</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/ses/v2/SES.html"><code>SES</code></a> extension.</p>
 </div>
 </li>
 </ul>
@@ -605,18 +605,18 @@ Currently these services are supported:</p>
 
 dependencies {
     // Choose the dependencies you need
-    testImplementation("me.madhead.aws-junit5:dynamo-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:dynamo-v2:6.0.2")
-    testImplementation("me.madhead.aws-junit5:s3-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:s3-v2:6.0.2")
-    testImplementation("me.madhead.aws-junit5:kinesis-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:kinesis-v2:6.0.2")
-    testImplementation("me.madhead.aws-junit5:sns-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:sns-v2:6.0.2")
-    testImplementation("me.madhead.aws-junit5:sqs-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:sqs-v2:6.0.2")
-    testImplementation("me.madhead.aws-junit5:ses-v1:6.0.2")
-    testImplementation("me.madhead.aws-junit5:ses-v2:6.0.2")
+    testImplementation("me.madhead.aws-junit5:dynamo-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:dynamo-v2:6.0.3")
+    testImplementation("me.madhead.aws-junit5:s3-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:s3-v2:6.0.3")
+    testImplementation("me.madhead.aws-junit5:kinesis-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:kinesis-v2:6.0.3")
+    testImplementation("me.madhead.aws-junit5:sns-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:sns-v2:6.0.3")
+    testImplementation("me.madhead.aws-junit5:sqs-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:sqs-v2:6.0.3")
+    testImplementation("me.madhead.aws-junit5:ses-v1:6.0.3")
+    testImplementation("me.madhead.aws-junit5:ses-v2:6.0.3")
 }</code></pre>
 </div>
 </div>
@@ -633,62 +633,62 @@ dependencies {
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;dynamo-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;dynamo-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;s3-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;s3-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;kinesis-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;kinesis-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;sns-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;sns-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;sqs-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;sqs-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;ses-v1&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
     &lt;artifactId&gt;ses-v2&lt;/artifactId&gt;
-    &lt;version&gt;6.0.2&lt;/version&gt;
+    &lt;version&gt;6.0.3&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -725,7 +725,7 @@ dependencies {
 But you are not locked to "fake" AWS implementations in your tests, you can use real endpoints as well.</p>
 </div>
 <div class="paragraph">
-<p>To provide these values you need to imlement <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html"><code>AWSEndpoint</code></a>.
+<p>To provide these values you need to imlement <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html"><code>AWSEndpoint</code></a>.
 Tests could take the values from the environment or system variables, following the <a href="https://12factor.net/config">twelve-factor principles</a>:</p>
 </div>
 <div class="listingblock">
@@ -761,7 +761,7 @@ Tests could take the values from the environment or system variables, following 
 For the list of supported extensions and clients refer to <a href="#_dependency_metadata">dependency metadata</a> section.</p>
 </div>
 <div class="paragraph">
-<p>Finally, put <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSClient.html"><code>AWSClient</code></a> annotation on the fields to be injected.</p>
+<p>Finally, put <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSClient.html"><code>AWSClient</code></a> annotation on the fields to be injected.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -796,26 +796,26 @@ Client configuration differs in AWS Java SDK v 1.x and 2.x, so there are two ann
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html"><code>v1.AWSAdvancedConfiguration</code></a></p>
+<p><a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/AWSAdvancedConfiguration.html"><code>v1.AWSAdvancedConfiguration</code></a></p>
 <div class="paragraph">
-<p>Allows you to configure <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html"><code>ClientConfiguration</code></a> by implementing <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html"><code>ClientConfigurationFactory</code></a>.</p>
+<p>Allows you to configure <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html"><code>ClientConfiguration</code></a> by implementing <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v1/ClientConfigurationFactory.html"><code>ClientConfigurationFactory</code></a>.</p>
 </div>
 </li>
 <li>
-<p><a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html"><code>v2.AWSAdvancedConfiguration</code></a></p>
+<p><a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/AWSAdvancedConfiguration.html"><code>v2.AWSAdvancedConfiguration</code></a></p>
 <div class="paragraph">
 <p>Allows you to configure:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html"><code>ClientOverrideConfiguration</code></a> by implementing <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html"><code>ClientOverrideConfigurationFactory</code></a>.</p>
+<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/config/ClientOverrideConfiguration.html"><code>ClientOverrideConfiguration</code></a> by implementing <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/ClientOverrideConfigurationFactory.html"><code>ClientOverrideConfigurationFactory</code></a>.</p>
 </li>
 <li>
-<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html"><code>SdkHttpClient</code></a> by implementing <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html"><code>SdkHttpClientFactory</code></a>.</p>
+<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html"><code>SdkHttpClient</code></a> by implementing <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html"><code>SdkHttpClientFactory</code></a>.</p>
 </li>
 <li>
-<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html"><code>SdkAsyncHttpClient</code></a> by implementing <a href="https://madhead.gitlab.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html"><code>SdkAsyncHttpClientFactory</code></a>.</p>
+<p><a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html"><code>SdkAsyncHttpClient</code></a> by implementing <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html"><code>SdkAsyncHttpClientFactory</code></a>.</p>
 </li>
 </ul>
 </div>
@@ -859,48 +859,45 @@ private KinesisAsyncClient client;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bonus_ci_with_gitlab"><a class="anchor" href="#_bonus_ci_with_gitlab"></a>3.4. [Bonus]: CI with GitLab</h3>
+<h3 id="_bonus_ci_with_github"><a class="anchor" href="#_bonus_ci_with_github"></a>3.4. [Bonus]: CI with GitHub</h3>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead/aws-junit5">This projects</a> itself has tests.
-It uses <a href="https://github.com/localstack/localstack">localstack</a> to mock AWS services.
+<p><a href="https://github.com/madhead/aws-junit5">This projects</a> itself has tests.
+It uses <a href="https://github.com/localstack/localstack">LocalStack</a> to mock AWS services.
 Here is how it works.</p>
 </div>
 <div class="paragraph">
 <p>First, you need to tell your CI server to start localstack whenever it runs tests.
-GitLab <a href="https://docs.gitlab.com/ee/ci/services/README.html">uses <code>services</code> keyword</a> in a job description:</p>
+GitHub <a href="https://docs.github.com/en/actions/using-containerized-services/about-service-containers">uses <code>services</code> keyword</a> in a job description:</p>
 </div>
 <div class="listingblock">
-<div class="title">gitlab-ci.yml</div>
+<div class="title">workflow.yml</div>
 <div class="content">
-<pre class="highlight"><code class="language-yml" data-lang="yml">job:
-…
-Unresolved directive in usage.adoc - include::../gitlab/gitlab-ci.yml[tag=services]
-…</code></pre>
+<pre class="highlight"><code class="language-yml" data-lang="yml">services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - 4566:4566
+    env:
+      SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>localstack with start services listed in the <code>SERVICES</code> environment variable, so I <a href="https://docs.gitlab.com/ee/ci/yaml/README.html#variables">define</a> them in the CI config as well:</p>
-</div>
-<div class="listingblock">
-<div class="title">gitlab-ci.yml</div>
-<div class="content">
-<pre class="highlight"><code class="language-yml" data-lang="yml">Unresolved directive in usage.adoc - include::../gitlab/gitlab-ci.yml[tag=variables,indent=0]
-…</code></pre>
-</div>
+<p>LocalStack will start services listed in the <code>SERVICES</code> environment variable.</p>
 </div>
 <div class="paragraph">
 <p>Before running the test, some seed data needs to be initialized.
 Here is how it may look like for S3:</p>
 </div>
 <div class="listingblock">
-<div class="title">gitlab-ci.yml</div>
+<div class="title">workflow.yml</div>
 <div class="content">
-<pre class="highlight"><code class="language-yml" data-lang="yml">job:
-…
-  before_script:
-…
-Unresolved directive in usage.adoc - include::../gitlab/gitlab-ci.yml[tag=seed]
-…</code></pre>
+<pre class="highlight"><code class="language-yml" data-lang="yml">- run: |
+    dynamo/seed/seed.sh
+    s3/seed/seed.sh
+    kinesis/seed/seed.sh
+    sns/seed/seed.sh
+    sqs/seed/seed.sh
+    ses/seed/seed.sh</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -955,8 +952,8 @@ Simply changing the <code>Endpoint</code> implementation you can attach any AWS 
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 6.0.2<br>
-Last updated 2022-01-16 18:36:29 UTC
+Version 6.0.3<br>
+Last updated 2022-01-16 19:34:28 UTC
 </div>
 </div>
 </body>
