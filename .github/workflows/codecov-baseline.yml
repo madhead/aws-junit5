@@ -1,0 +1,49 @@
+name: Codecov baseline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  codecov-baseline:
+    name: Codecov baseline
+    runs-on: ubuntu-latest
+    env:
+      ME_MADHEAD_AWS_JUNIT5_USE_LATEST_AWS_SDK: true
+      CBOR_ENABLED: false
+    services:
+      localstack:
+        image: localstack/localstack
+        ports:
+          - 4566:4566
+        env:
+          SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 8
+
+      - uses: gradle/wrapper-validation-action@v1
+
+      - run: |
+          cat .github/workflows/test.env >> $GITHUB_ENV
+
+      - run: |
+          dynamo/seed/seed.sh
+          s3/seed/seed.sh
+          kinesis/seed/seed.sh
+          sns/seed/seed.sh
+          sqs/seed/seed.sh
+          ses/seed/seed.sh
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: test jacocoTestReport --stacktrace --scan
+
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -2,7 +2,7 @@ import java.util.Properties
 
 plugins {
     id("org.asciidoctor.jvm.convert").version("3.3.2")
-    id("io.github.gradle-nexus.publish-plugin").version("1.0.0")
+    id("io.github.gradle-nexus.publish-plugin").version("1.1.0")
 }
 
 repositories {
