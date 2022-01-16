@@ -1,0 +1,116 @@
+name: Default
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  check-gradle-version:
+    name: Check Gradle version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - uses: madhead/check-gradle-version@v1
+    continue-on-error: true
+
+  check-copyright:
+    name: Check copyright date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - run: |
+          copyright_year=$(sed -n 's/Copyright Ⓒ \([[:digit:]]\{4\}\) madhead <siarhei.krukau@gmail.com>/\1/p' LICENSE)
+          current_year=$(date +%Y)
+          echo $copyright_year
+          echo $current_year
+          [[ $copyright_year == $current_year ]]
+    continue-on-error: true
+
+  unit-test:
+    name: Unit test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java:
+          - 8
+          - 11
+          - 17
+        latest-aws-sdk:
+          - true
+          - false
+    env:
+      ME_MADHEAD_AWS_JUNIT5_USE_LATEST_AWS_SDK: ${{ matrix.latest-aws-sdk }}
+      CBOR_ENABLED: false
+    services:
+      localstack:
+        image: localstack/localstack
+        ports:
+          - 4566:4566
+        env:
+          SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: ${{ matrix.java }}
+
+      - uses: gradle/wrapper-validation-action@v1
+
+      - run: |
+          cat .github/workflows/test.env >> $GITHUB_ENV
+
+      - run: |
+          dynamo/seed/seed.sh
+          s3/seed/seed.sh
+          kinesis/seed/seed.sh
+          sns/seed/seed.sh
+          sqs/seed/seed.sh
+          ses/seed/seed.sh
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: test jacocoTestReport --stacktrace --scan
+
+      - uses: codecov/codecov-action@v2
+        if: ${{ matrix.java == '8' && matrix.latest-aws-sdk }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: test-results-${{ matrix.java }}-${{ matrix.latest-aws-sdk }}
+          retention-days: 1
+          path: |
+            **/build/reports
+            **/build/test-results
+            **/build/jacoco
+
+  test-publish:
+    name: Publish test results
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java:
+          - 8
+          - 11
+          - 17
+        latest-aws-sdk:
+          - true
+          - false
+    needs:
+      - unit-test
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: test-results-${{ matrix.java }}-${{ matrix.latest-aws-sdk }}
+
+      - uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: "**/test-results/**/TEST-*.xml"

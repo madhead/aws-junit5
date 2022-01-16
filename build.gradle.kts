@@ -90,7 +90,6 @@ configure(
                     }
                     scm {
                         connection.set("scm:git:git@github.com:madhead/aws-junit5.git")
-                        developerConnection.set("scm:git:git@gitlab.com:madhead/aws-junit5.git")
                         url.set("https://github.com/madhead/aws-junit5")
                     }
                 }
@@ -99,13 +98,13 @@ configure(
     }
 
     configure<JacocoPluginExtension> {
-        toolVersion = "0.8.6"
+        toolVersion = "0.8.7"
     }
 
     tasks {
         withType<Test> {
             systemProperties = Properties().apply {
-                load(File(rootDir, "gitlab/test.sys").bufferedReader())
+                load(File(rootDir, ".github/workflows/test.sys").bufferedReader())
             }.mapKeys { entry -> entry.key.toString() }
             useJUnitPlatform()
             testLogging {
