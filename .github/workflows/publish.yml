@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  OSSRH:
+    name: OSSRH
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 8
+
+      - uses: gradle/wrapper-validation-action@v1
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
+
+  pages:
+    name: Publish the documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 8
+
+      - uses: gradle/wrapper-validation-action@v1
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: javadocs asciidoctor
+
+      - run: |
+          mkdir public
+          cp -r build/docs/javadoc public/javadoc
+          cp -r build/docs/asciidoc public/asciidoc
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
