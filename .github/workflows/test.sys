@@ -37,3 +37,8 @@ ses.url=http://localhost:4566
 ses.region=us-east-1
 ses.accessKey=accessKey
 ses.secretKey=secretKey
+
+lambda.url=http://localhost:4566
+lambda.region=us-east-1
+lambda.accessKey=accessKey
+lambda.secretKey=secretKey
