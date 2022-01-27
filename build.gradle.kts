@@ -71,6 +71,12 @@ configure(
             val main by creating(MavenPublication::class) {
                 from(components["java"])
 
+                versionMapping {
+                    allVariants {
+                        fromResolutionResult()
+                    }
+                }
+
                 pom {
                     name.set("aws-junit5 :: ${project.name}")
                     description.set("aws-junit5 :: ${project.name}")
