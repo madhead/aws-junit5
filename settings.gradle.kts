@@ -19,7 +19,9 @@ include(
     ":sqs:v1",
     ":sqs:v2",
     ":ses:v1",
-    ":ses:v2"
+    ":ses:v2",
+    ":lambda:v1",
+    ":lambda:v2",
 )
 
 project(":common:v1").name = "common-v1"
@@ -36,6 +38,8 @@ project(":sqs:v1").name = "sqs-v1"
 project(":sqs:v2").name = "sqs-v2"
 project(":ses:v1").name = "ses-v1"
 project(":ses:v2").name = "ses-v2"
+project(":lambda:v1").name = "lambda-v1"
+project(":lambda:v2").name = "lambda-v2"
 
 gradleEnterprise {
     buildScan {

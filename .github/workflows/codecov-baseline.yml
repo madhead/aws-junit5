@@ -18,7 +18,7 @@ jobs:
         ports:
           - 4566:4566
         env:
-          SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses
+          SERVICES: dynamodb,dynamodbstreams,s3,kinesis,firehose,sqs,sns,ses,lambda
     steps:
       - uses: actions/checkout@v2
 
@@ -39,6 +39,7 @@ jobs:
           sns/seed/seed.sh
           sqs/seed/seed.sh
           ses/seed/seed.sh
+          lambda/seed/seed.sh
 
       - uses: gradle/gradle-build-action@v2
         with:
