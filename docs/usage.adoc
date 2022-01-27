@@ -12,7 +12,7 @@ In order to use an AWS service you basically need 4 essential parameters:
 Not all of them are required, for example https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html[DynamoDB Local] allows empty keys.
 But you are not locked to "fake" AWS implementations in your tests, you can use real endpoints as well.
 
-To provide these values you need to imlement https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
+To provide these values you need to implement https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html[`AWSEndpoint`].
 Tests could take the values from the environment or system variables, following the https://12factor.net/config[twelve-factor principles]:
 
 [source,java]
@@ -51,7 +51,7 @@ Allows you to configure:
 ** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/SdkHttpClient.html[`SdkHttpClient`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkHttpClientFactory.html[`SdkHttpClientFactory`].
 ** https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/async/SdkAsyncHttpClient.html[`SdkAsyncHttpClient`] by implementing https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/v2/SdkAsyncHttpClientFactory.html[`SdkAsyncHttpClientFactory`].
 
-Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificats:
+Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificates:
 
 [source,java]
 ----

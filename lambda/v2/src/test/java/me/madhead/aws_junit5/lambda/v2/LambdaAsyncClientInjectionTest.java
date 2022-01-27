@@ -1,7 +1,5 @@
 package me.madhead.aws_junit5.lambda.v2;
 
-import java.util.Collections;
-import java.util.stream.Collectors;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import software.amazon.awssdk.services.lambda.LambdaAsyncClient;
 import software.amazon.awssdk.services.lambda.model.FunctionConfiguration;
+
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 @ExtendWith(Lambda.class)
 class LambdaAsyncClientInjectionTest {

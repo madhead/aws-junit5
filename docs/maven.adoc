@@ -41,6 +41,12 @@ Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/c
 ** `ses-v2`
 +
 Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html[`SesClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html[`SesAsyncClient`]  via https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/ses/v2/SES.html[`SES`] extension.
+** `lambda-v1`
++
+Support for injection of https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/lambda/AWSLambda.html[`AWSLambda`] and https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/lambda/AWSLambdaAsync.html[`AWSLambdaAsync`]  via https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/lambda/v1/Lambda.html[`Lambda`] extension.
+** `lambda-v2`
++
+Support for injection of https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/lambda/LambdaClient.html[`LambdaClient`] and https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/lambda/LambdaAsyncClient.html[`LambdaAsyncClient`]  via https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/lambda/v2/Lambda.html[`Lambda`] extension.
 
 === Gradle
 
@@ -65,6 +71,8 @@ dependencies {
     testImplementation("me.madhead.aws-junit5:sqs-v2:{revnumber}")
     testImplementation("me.madhead.aws-junit5:ses-v1:{revnumber}")
     testImplementation("me.madhead.aws-junit5:ses-v2:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:lambda-v1:{revnumber}")
+    testImplementation("me.madhead.aws-junit5:lambda-v2:{revnumber}")
 }
 ----
 
@@ -76,65 +84,75 @@ Specify the dependencies you need as usual:
 [source,xml,subs=attributes+]
 ----
 <dependencies>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>dynamo-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>dynamo-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>s3-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>s3-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>kinesis-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>kinesis-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>sns-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>sns-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>sqs-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>sqs-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>ses-v1</artifactId>
-    <version>{revnumber}</version>
-</dependency>
-<dependency>
-    <groupId>me.madhead.aws-junit5</groupId>
-    <artifactId>ses-v2</artifactId>
-    <version>{revnumber}</version>
-</dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>dynamo-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>dynamo-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>s3-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>s3-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>kinesis-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>kinesis-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>sns-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>sns-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>sqs-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>sqs-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>ses-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>ses-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>lambda-v1</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
+    <dependency>
+        <groupId>me.madhead.aws-junit5</groupId>
+        <artifactId>lambda-v2</artifactId>
+        <version>{revnumber}</version>
+    </dependency>
 </dependencies>
 ----

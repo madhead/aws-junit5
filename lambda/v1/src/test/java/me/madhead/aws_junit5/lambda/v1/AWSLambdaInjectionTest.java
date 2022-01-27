@@ -1,13 +1,14 @@
 package me.madhead.aws_junit5.lambda.v1;
 
 import com.amazonaws.services.lambda.AWSLambda;
-import java.util.Collections;
-import java.util.stream.Collectors;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 @ExtendWith(Lambda.class)
 class AWSLambdaInjectionTest {
@@ -17,7 +18,7 @@ class AWSLambdaInjectionTest {
     private AWSLambda client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

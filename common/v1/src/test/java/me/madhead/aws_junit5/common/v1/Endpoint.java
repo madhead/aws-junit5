@@ -1,7 +1,7 @@
 package me.madhead.aws_junit5.common.v1;
 
-import me.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.regions.Regions;
+import me.madhead.aws_junit5.common.AWSEndpoint;
 
 class Endpoint implements AWSEndpoint {
     @Override

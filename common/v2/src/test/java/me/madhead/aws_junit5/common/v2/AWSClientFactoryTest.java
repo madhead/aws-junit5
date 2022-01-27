@@ -13,6 +13,8 @@ import software.amazon.awssdk.services.firehose.FirehoseAsyncClient;
 import software.amazon.awssdk.services.firehose.FirehoseClient;
 import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;
 import software.amazon.awssdk.services.kinesis.KinesisClient;
+import software.amazon.awssdk.services.lambda.LambdaAsyncClient;
+import software.amazon.awssdk.services.lambda.LambdaClient;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.ses.SesAsyncClient;
@@ -47,7 +49,7 @@ class AWSClientFactoryTest {
     @TestFactory
     Stream<DynamicTest> test() {
         return
-            new HashMap<Class, AwsClientBuilder>() {{
+            new HashMap<Class<?>, AwsClientBuilder<?, ?>>() {{
                 put(DynamoDbClient.class, DynamoDbClient.builder());
                 put(DynamoDbAsyncClient.class, DynamoDbAsyncClient.builder());
                 put(DynamoDbStreamsClient.class, DynamoDbStreamsClient.builder());
@@ -64,13 +66,15 @@ class AWSClientFactoryTest {
                 put(SqsAsyncClient.class, SqsAsyncClient.builder());
                 put(SesClient.class, SesClient.builder());
                 put(SesAsyncClient.class, SesAsyncClient.builder());
+                put(LambdaClient.class, LambdaClient.builder());
+                put(LambdaAsyncClient.class, LambdaAsyncClient.builder());
             }}.entrySet()
                 .stream()
                 .flatMap(entry -> Stream.of(
                     DynamicTest.dynamicTest(
                         "AWS client factory test for " + entry.getKey().getSimpleName(),
                         () -> {
-                            @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
+                            final AWSClientFactory<?, ?> clientFactory = new AWSClientFactory<>(entry.getValue());
                             final Object client = clientFactory.client(this.getClass().getDeclaredField("field"));
 
                             Assertions.assertTrue(entry.getKey().isInstance(client));
@@ -79,7 +83,7 @@ class AWSClientFactoryTest {
                     DynamicTest.dynamicTest(
                         "Advanced default AWS client factory test for " + entry.getKey().getSimpleName(),
                         () -> {
-                            @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
+                            final AWSClientFactory<?, ?> clientFactory = new AWSClientFactory<>(entry.getValue());
                             final Object client = clientFactory.client(this.getClass().getDeclaredField("deFault"));
 
                             Assertions.assertTrue(entry.getKey().isInstance(client));
@@ -88,7 +92,7 @@ class AWSClientFactoryTest {
                     DynamicTest.dynamicTest(
                         "Advanced custom AWS client factory test for " + entry.getKey().getSimpleName(),
                         () -> {
-                            @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(entry.getValue());
+                            final AWSClientFactory<?, ?> clientFactory = new AWSClientFactory<>(entry.getValue());
                             final Object client = clientFactory.client(this.getClass().getDeclaredField("custom"));
 
                             Assertions.assertTrue(entry.getKey().isInstance(client));

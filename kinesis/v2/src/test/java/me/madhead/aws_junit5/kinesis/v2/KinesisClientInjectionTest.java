@@ -30,7 +30,7 @@ class KinesisClientInjectionTest {
     }
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

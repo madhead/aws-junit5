@@ -15,23 +15,25 @@ class AWSClientFactoryInvalidConfigurationTest {
     private Object nullURLAWSEndpoint;
 
     @Test
-    void testEmpty() throws Exception {
-        final IllegalArgumentException exception = Assertions.assertThrows(
+    void testEmpty() {
+        Assertions.assertThrows(
             IllegalArgumentException.class,
             () -> {
-                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(DynamoDbClient.builder());
-                final Object client = clientFactory.client(this.getClass().getDeclaredField("emptyURLAWSEndpoint"));
+                final AWSClientFactory<?, ?> clientFactory = new AWSClientFactory<>(DynamoDbClient.builder());
+
+                clientFactory.client(this.getClass().getDeclaredField("emptyURLAWSEndpoint"));
             }
         );
     }
 
     @Test
-    void testNull() throws Exception {
-        final IllegalArgumentException exception = Assertions.assertThrows(
+    void testNull() {
+        Assertions.assertThrows(
             IllegalArgumentException.class,
             () -> {
-                @SuppressWarnings("unchecked") final AWSClientFactory clientFactory = new AWSClientFactory(DynamoDbClient.builder());
-                final Object client = clientFactory.client(this.getClass().getDeclaredField("nullURLAWSEndpoint"));
+                final AWSClientFactory<?, ?> clientFactory = new AWSClientFactory<>(DynamoDbClient.builder());
+
+                clientFactory.client(this.getClass().getDeclaredField("nullURLAWSEndpoint"));
             }
         );
     }

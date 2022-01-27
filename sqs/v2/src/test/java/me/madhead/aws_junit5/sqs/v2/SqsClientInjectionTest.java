@@ -18,7 +18,7 @@ class SqsClientInjectionTest {
     private SqsClient client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

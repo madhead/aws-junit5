@@ -1,8 +1,8 @@
 package me.madhead.aws_junit5.kinesis.v1;
 
+import com.amazonaws.services.kinesis.AmazonKinesisAsync;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
-import com.amazonaws.services.kinesis.AmazonKinesisAsync;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
