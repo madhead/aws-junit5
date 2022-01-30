@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -101,7 +101,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html" title="class in me.madhead.aws_junit5.common.impl">me.madhead.aws_junit5.common.impl.AWSClientExtension</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html" title="class in me.madhead.aws_junit5.common.impl">me.madhead.aws_junit5.common.impl.AWSClientExtensionBase</a></li>
+<li>
+<ul class="inheritance">
 <li>me.madhead.aws_junit5.sqs.v1.SQS</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -117,7 +122,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">SQS</span>
-extends <a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtension</a></pre>
+extends <a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtensionBase</a></pre>
 <div class="block">Use <a href="../../../../../me/madhead/aws_junit5/sqs/v1/SQS.html" title="class in me.madhead.aws_junit5.sqs.v1"><code>SQS</code></a> to extend tests with fields that are subjects for SQS injection.</div>
 </li>
 </ul>
@@ -155,18 +160,17 @@ extends <a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExten
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../me/madhead/aws_junit5/sqs/v1/SQS.html#client-java.lang.reflect.Field-">client</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>&nbsp;field)</code>
-<div class="block">Return an object to inject in the <code>field</code>.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../me/madhead/aws_junit5/sqs/v1/SQS.html#supports-java.lang.reflect.Field-">supports</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>&nbsp;field)</code>
-<div class="block">Return whether this extension is able to inject the <code>field</code>.</div>
-</td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;,<a href="../../../../../me/madhead/aws_junit5/common/v1/AWSClientFactory.html" title="class in me.madhead.aws_junit5.common.v1">AWSClientFactory</a>&lt;?,?&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../me/madhead/aws_junit5/sqs/v1/SQS.html#factories--">factories</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.me.madhead.aws_junit5.common.impl.AWSClientExtensionBase">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;me.madhead.aws_junit5.common.impl.<a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtensionBase</a></h3>
+<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html#client-java.lang.reflect.Field-">client</a>, <a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html#supports-java.lang.reflect.Field-">supports</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.me.madhead.aws_junit5.common.impl.AWSClientExtension">
 <!--   -->
@@ -212,44 +216,16 @@ extends <a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExten
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="supports-java.lang.reflect.Field-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>supports</h4>
-<pre>protected&nbsp;boolean&nbsp;supports(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>&nbsp;field)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html#supports-java.lang.reflect.Field-">AWSClientExtension</a></code></span></div>
-<div class="block">Return whether this extension is able to inject the <code>field</code>.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html#supports-java.lang.reflect.Field-">supports</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtension</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>field</code> - a field to inject into.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>whether this extension is able to inject the <code>field</code>.</dd>
-</dl>
-</li>
-</ul>
-<a name="client-java.lang.reflect.Field-">
+<a name="factories--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>client</h4>
-<pre>protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;client(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>&nbsp;field)
-                 throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html#client-java.lang.reflect.Field-">AWSClientExtension</a></code></span></div>
-<div class="block">Return an object to inject in the <code>field</code>.</div>
+<h4>factories</h4>
+<pre>protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;,<a href="../../../../../me/madhead/aws_junit5/common/v1/AWSClientFactory.html" title="class in me.madhead.aws_junit5.common.v1">AWSClientFactory</a>&lt;?,?&gt;&gt;&nbsp;factories()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html#client-java.lang.reflect.Field-">client</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtension.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtension</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>field</code> - a field to inject into.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>an object to inject in the <code>field</code>.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code> - when something went wrong.</dd>
+<dd><code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html#factories--">factories</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../me/madhead/aws_junit5/common/impl/AWSClientExtensionBase.html" title="class in me.madhead.aws_junit5.common.impl">AWSClientExtensionBase</a></code></dd>
 </dl>
 </li>
 </ul>

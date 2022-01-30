@@ -440,7 +440,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>aws-junit5</h1>
 <div class="details">
-<span id="revnumber">version 7.1.0</span>
+<span id="revnumber">version 7.1.1</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -470,7 +470,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>aws-junit5 is a collection of JUnit 5 <a href="https://junit.org/junit5/docs/current/user-guide/#extensions">extensions</a> that can be used to inject clients for AWS service mocks provided by tools like <a href="https://github.com/localstack/localstack">localstack</a> or <a href="https://aws.amazon.com/about-aws/whats-new/2018/08/use-amazon-dynamodb-local-more-easily-with-the-new-docker-image/">DynamoDB Local</a> in your tests.
 Both AWS Java SDK <a href="https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/welcome.html">v 2.x</a> and <a href="https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/welcome.html">v 1.x</a> are supported.
-Currently these services are supported:</p>
+Currently, these services are supported:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -495,6 +495,9 @@ Currently these services are supported:</p>
 <li>
 <p><a href="https://aws.amazon.com/sqs">SQS</a></p>
 </li>
+<li>
+<p><a href="https://aws.amazon.com/lambda">Lambda</a></p>
+</li>
 </ul>
 </div>
 </div>
@@ -511,7 +514,7 @@ Currently these services are supported:</p>
 <p><strong>Group ID</strong>: <code>me.madhead.aws-junit5</code></p>
 </li>
 <li>
-<p><strong>Version</strong>: <code>7.1.0</code></p>
+<p><strong>Version</strong>: <code>7.1.1</code></p>
 </li>
 <li>
 <p><strong>Artifacts</strong>:</p>
@@ -589,6 +592,18 @@ Currently these services are supported:</p>
 <p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/ses/SesClient.html"><code>SesAsyncClient</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/ses/v2/SES.html"><code>SES</code></a> extension.</p>
 </div>
 </li>
+<li>
+<p><code>lambda-v1</code></p>
+<div class="paragraph">
+<p>Support for injection of <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/lambda/AWSLambda.html"><code>AWSLambda</code></a> and <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/lambda/AWSLambdaAsync.html"><code>AWSLambdaAsync</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/lambda/v1/Lambda.html"><code>Lambda</code></a> extension.</p>
+</div>
+</li>
+<li>
+<p><code>lambda-v2</code></p>
+<div class="paragraph">
+<p>Support for injection of <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/lambda/LambdaClient.html"><code>LambdaClient</code></a> and <a href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/lambda/LambdaAsyncClient.html"><code>LambdaAsyncClient</code></a>  via <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/lambda/v2/Lambda.html"><code>Lambda</code></a> extension.</p>
+</div>
+</li>
 </ul>
 </div>
 </li>
@@ -605,18 +620,20 @@ Currently these services are supported:</p>
 
 dependencies {
     // Choose the dependencies you need
-    testImplementation("me.madhead.aws-junit5:dynamo-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:dynamo-v2:7.1.0")
-    testImplementation("me.madhead.aws-junit5:s3-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:s3-v2:7.1.0")
-    testImplementation("me.madhead.aws-junit5:kinesis-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:kinesis-v2:7.1.0")
-    testImplementation("me.madhead.aws-junit5:sns-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:sns-v2:7.1.0")
-    testImplementation("me.madhead.aws-junit5:sqs-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:sqs-v2:7.1.0")
-    testImplementation("me.madhead.aws-junit5:ses-v1:7.1.0")
-    testImplementation("me.madhead.aws-junit5:ses-v2:7.1.0")
+    testImplementation("me.madhead.aws-junit5:dynamo-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:dynamo-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:s3-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:s3-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:kinesis-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:kinesis-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:sns-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:sns-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:sqs-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:sqs-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:ses-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:ses-v2:7.1.1")
+    testImplementation("me.madhead.aws-junit5:lambda-v1:7.1.1")
+    testImplementation("me.madhead.aws-junit5:lambda-v2:7.1.1")
 }</code></pre>
 </div>
 </div>
@@ -630,66 +647,76 @@ dependencies {
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependencies&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;dynamo-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;dynamo-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;s3-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;s3-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;kinesis-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;kinesis-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;sns-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;sns-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;sqs-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;sqs-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;ses-v1&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
-    &lt;artifactId&gt;ses-v2&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;dynamo-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;dynamo-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;s3-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;s3-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;kinesis-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;kinesis-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;sns-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;sns-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;sqs-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;sqs-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;ses-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;ses-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;lambda-v1&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;me.madhead.aws-junit5&lt;/groupId&gt;
+        &lt;artifactId&gt;lambda-v2&lt;/artifactId&gt;
+        &lt;version&gt;7.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
 </div>
@@ -725,7 +752,7 @@ dependencies {
 But you are not locked to "fake" AWS implementations in your tests, you can use real endpoints as well.</p>
 </div>
 <div class="paragraph">
-<p>To provide these values you need to imlement <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html"><code>AWSEndpoint</code></a>.
+<p>To provide these values you need to implement <a href="https://madhead.github.io/aws-junit5/javadoc/me/madhead/aws_junit5/common/AWSEndpoint.html"><code>AWSEndpoint</code></a>.
 Tests could take the values from the environment or system variables, following the <a href="https://12factor.net/config">twelve-factor principles</a>:</p>
 </div>
 <div class="listingblock">
@@ -773,7 +800,7 @@ class AmazonDynamoDBInjectionTest {
     private AmazonDynamoDB client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(
@@ -823,7 +850,7 @@ Client configuration differs in AWS Java SDK v 1.x and 2.x, so there are two ann
 </ul>
 </div>
 <div class="paragraph">
-<p>Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificats:</p>
+<p>Here is how you can configure asynchronous Netty-based client to use HTTP 1.1 protocol and trust all certificates:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -908,8 +935,8 @@ Here is how it may look like for S3:</p>
 
 set -x
 
-aws --endpoint-url ${S3_URL} s3api delete-bucket --bucket bucket || true
-aws --endpoint-url ${S3_URL} s3api create-bucket --bucket bucket</code></pre>
+aws --endpoint-url "${S3_URL}" s3api delete-bucket --bucket bucket || true
+aws --endpoint-url "${S3_URL}" s3api create-bucket --bucket bucket</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -926,7 +953,7 @@ class S3ClientInjectionTest {
     private S3Client client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(
@@ -953,8 +980,8 @@ Simply changing the <code>Endpoint</code> implementation you can attach any AWS 
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 7.1.0<br>
-Last updated 2022-01-27 23:02:52 UTC
+Version 7.1.1<br>
+Last updated 2022-01-30 01:53:01 UTC
 </div>
 </div>
 </body>
