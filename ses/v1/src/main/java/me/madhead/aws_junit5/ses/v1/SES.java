@@ -1,21 +1,20 @@
 package me.madhead.aws_junit5.ses.v1;
 
-import me.madhead.aws_junit5.common.impl.AWSClientExtension;
-import me.madhead.aws_junit5.common.v1.AWSClientFactory;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceAsync;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceAsyncClientBuilder;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
+import me.madhead.aws_junit5.common.impl.AWSClientExtensionBase;
+import me.madhead.aws_junit5.common.v1.AWSClientFactory;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Use {@link SES} to extend tests with fields that are subjects for SES injection.
  */
-public class SES extends AWSClientExtension {
-    private final static Map<Class, AWSClientFactory> factories;
+public class SES extends AWSClientExtensionBase {
+    private final static Map<Class<?>, AWSClientFactory<?, ?>> factories;
 
     static {
         factories = new HashMap<>();
@@ -24,12 +23,7 @@ public class SES extends AWSClientExtension {
     }
 
     @Override
-    protected boolean supports(final Field field) {
-        return factories.containsKey(field.getType());
-    }
-
-    @Override
-    protected Object client(final Field field) throws Exception {
-        return factories.get(field.getType()).client(field);
+    protected Map<Class<?>, AWSClientFactory<?, ?>> factories() {
+        return factories;
     }
 }

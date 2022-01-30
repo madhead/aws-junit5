@@ -18,4 +18,5 @@ dependencies {
     testImplementation("com.amazonaws:aws-java-sdk-sns")
     testImplementation("com.amazonaws:aws-java-sdk-sqs")
     testImplementation("com.amazonaws:aws-java-sdk-ses")
+    testImplementation("com.amazonaws:aws-java-sdk-lambda")
 }

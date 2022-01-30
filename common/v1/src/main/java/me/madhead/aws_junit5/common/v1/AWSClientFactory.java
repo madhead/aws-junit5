@@ -1,12 +1,12 @@
 package me.madhead.aws_junit5.common.v1;
 
-import me.madhead.aws_junit5.common.AWSClient;
-import me.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.util.StringUtils;
+import me.madhead.aws_junit5.common.AWSClient;
+import me.madhead.aws_junit5.common.AWSEndpoint;
 
 import java.lang.reflect.Field;
 
@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
  * Creates AWS Java SDK v 1.x clients of type {@link T}.
  *
  * @param <S>
- *     the type of an {@link AwsClientBuilder}, who actually creates AWS clients of type {@link T}.
+ *     the type of {@link AwsClientBuilder}, who actually creates AWS clients of type {@link T}.
  * @param <T>
  *     the type of AWS clients this factory creates.
  */
@@ -28,7 +28,7 @@ public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> impleme
     @Override
     public T client(final Field field) throws Exception {
         final AWSClient awsClientAnnotation = field.getAnnotation(AWSClient.class);
-        final AWSEndpoint endpoint = awsClientAnnotation.endpoint().newInstance();
+        final AWSEndpoint endpoint = awsClientAnnotation.endpoint().getDeclaredConstructor().newInstance();
 
         validate(endpoint);
 
@@ -47,7 +47,8 @@ public final class AWSClientFactory<S extends AwsClientBuilder<S, T>, T> impleme
 
         if (field.isAnnotationPresent(AWSAdvancedConfiguration.class)) {
             final AWSAdvancedConfiguration awsAdvancedConfiguration = field.getAnnotation(AWSAdvancedConfiguration.class);
-            final ClientConfiguration clientConfiguration = awsAdvancedConfiguration.clientConfigurationFactory().newInstance().create();
+            final ClientConfiguration clientConfiguration =
+                awsAdvancedConfiguration.clientConfigurationFactory().getDeclaredConstructor().newInstance().create();
 
             if (clientConfiguration != null) {
                 awsClientBuilder.withClientConfiguration(clientConfiguration);

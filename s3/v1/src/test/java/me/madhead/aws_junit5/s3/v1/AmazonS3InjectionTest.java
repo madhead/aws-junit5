@@ -1,9 +1,9 @@
 package me.madhead.aws_junit5.s3.v1;
 
-import me.madhead.aws_junit5.common.AWSClient;
-import me.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
+import me.madhead.aws_junit5.common.AWSClient;
+import me.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ class AmazonS3InjectionTest {
     private AmazonS3 client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

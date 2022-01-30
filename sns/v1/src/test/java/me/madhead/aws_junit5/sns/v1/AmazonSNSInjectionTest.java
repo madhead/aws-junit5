@@ -19,7 +19,7 @@ class AmazonSNSInjectionTest {
     private AmazonSNS client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

@@ -20,7 +20,7 @@ public abstract class AWSClientExtension implements TestInstancePostProcessor {
     }
 
     private void inject(final Object testInstance, final Field field) throws Exception {
-        final boolean accessible = field.isAccessible();
+        @SuppressWarnings("deprecation") final boolean accessible = field.isAccessible();
 
         try {
             field.setAccessible(true);

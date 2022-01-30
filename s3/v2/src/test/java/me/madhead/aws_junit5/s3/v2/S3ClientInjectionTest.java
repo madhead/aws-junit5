@@ -20,7 +20,7 @@ class S3ClientInjectionTest {
     private S3Client client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

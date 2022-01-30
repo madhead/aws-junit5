@@ -19,7 +19,7 @@ class SnsClientInjectionTest {
     private SnsClient client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

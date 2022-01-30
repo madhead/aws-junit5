@@ -1,7 +1,5 @@
 package me.madhead.aws_junit5.kinesis.v1;
 
-import me.madhead.aws_junit5.common.impl.AWSClientExtension;
-import me.madhead.aws_junit5.common.v1.AWSClientFactory;
 import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.AmazonKinesisAsync;
 import com.amazonaws.services.kinesis.AmazonKinesisAsyncClientBuilder;
@@ -10,16 +8,17 @@ import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose;
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseAsync;
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseAsyncClientBuilder;
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseClientBuilder;
+import me.madhead.aws_junit5.common.impl.AWSClientExtensionBase;
+import me.madhead.aws_junit5.common.v1.AWSClientFactory;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Use {@link Kinesis} to extend tests with fields that are subjects for Kinesis injection.
  */
-public class Kinesis extends AWSClientExtension {
-    private final static Map<Class, AWSClientFactory> factories;
+public class Kinesis extends AWSClientExtensionBase {
+    private final static Map<Class<?>, AWSClientFactory<?, ?>> factories;
 
     static {
         factories = new HashMap<>();
@@ -30,12 +29,7 @@ public class Kinesis extends AWSClientExtension {
     }
 
     @Override
-    protected boolean supports(final Field field) {
-        return factories.containsKey(field.getType());
-    }
-
-    @Override
-    protected Object client(final Field field) throws Exception {
-        return factories.get(field.getType()).client(field);
+    protected Map<Class<?>, AWSClientFactory<?, ?>> factories() {
+        return factories;
     }
 }

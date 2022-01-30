@@ -18,7 +18,7 @@ class SesClientInjectionTest {
     private SesClient client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

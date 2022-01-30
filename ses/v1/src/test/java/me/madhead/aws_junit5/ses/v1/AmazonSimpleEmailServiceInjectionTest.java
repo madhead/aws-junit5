@@ -1,8 +1,8 @@
 package me.madhead.aws_junit5.ses.v1;
 
+import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +18,7 @@ class AmazonSimpleEmailServiceInjectionTest {
     private AmazonSimpleEmailService client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

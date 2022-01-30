@@ -1,9 +1,9 @@
 package me.madhead.aws_junit5.kinesis.v1;
 
-import me.madhead.aws_junit5.common.AWSClient;
-import me.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose;
 import com.amazonaws.services.kinesisfirehose.model.ListDeliveryStreamsRequest;
+import me.madhead.aws_junit5.common.AWSClient;
+import me.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

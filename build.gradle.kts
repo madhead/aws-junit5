@@ -140,12 +140,12 @@ tasks {
                 "https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/"
             )
         }
-        subprojects.forEach {
-            it.tasks.withType<Javadoc>().forEach {
-                source += it.source
-                classpath += it.classpath
-                includes += it.includes
-                excludes += it.excludes
+        subprojects.forEach { subproject ->
+            subproject.tasks.withType<Javadoc>().forEach { task ->
+                source += task.source
+                classpath += task.classpath
+                includes += task.includes
+                excludes += task.excludes
             }
         }
     }

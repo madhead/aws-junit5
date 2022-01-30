@@ -1,10 +1,10 @@
 package me.madhead.aws_junit5.dynamo.v1;
 
-import me.madhead.aws_junit5.common.AWSClient;
-import me.madhead.aws_junit5.common.AWSEndpoint;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreams;
 import com.amazonaws.services.dynamodbv2.model.ListStreamsRequest;
 import com.amazonaws.services.dynamodbv2.model.Stream;
+import me.madhead.aws_junit5.common.AWSClient;
+import me.madhead.aws_junit5.common.AWSEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

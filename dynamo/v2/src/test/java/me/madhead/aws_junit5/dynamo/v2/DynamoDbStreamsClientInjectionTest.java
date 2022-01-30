@@ -19,7 +19,7 @@ class DynamoDbStreamsClientInjectionTest {
     private DynamoDbStreamsClient client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(

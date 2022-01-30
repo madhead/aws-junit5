@@ -2,7 +2,7 @@
 
 aws-junit5 is a collection of JUnit 5 https://junit.org/junit5/docs/current/user-guide/#extensions[extensions] that can be used to inject clients for AWS service mocks provided by tools like https://github.com/localstack/localstack[localstack] or https://aws.amazon.com/about-aws/whats-new/2018/08/use-amazon-dynamodb-local-more-easily-with-the-new-docker-image/[DynamoDB Local] in your tests.
 Both AWS Java SDK https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/welcome.html[v 2.x] and https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/welcome.html[v 1.x] are supported.
-Currently these services are supported:
+Currently, these services are supported:
 
 - https://aws.amazon.com/dynamodb[DynamoDB]
 - https://aws.amazon.com/kinesis/data-streams[Kinesis Data Streams]
@@ -11,3 +11,4 @@ Currently these services are supported:
 - https://aws.amazon.com/ses[SES]
 - https://aws.amazon.com/sns[SNS]
 - https://aws.amazon.com/sqs[SQS]
+- https://aws.amazon.com/lambda[Lambda]

@@ -1,8 +1,8 @@
 package me.madhead.aws_junit5.sqs.v1;
 
+import com.amazonaws.services.sqs.AmazonSQS;
 import me.madhead.aws_junit5.common.AWSClient;
 import me.madhead.aws_junit5.common.AWSEndpoint;
-import com.amazonaws.services.sqs.AmazonSQS;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +18,7 @@ class AmazonSQSInjectionTest {
     private AmazonSQS client;
 
     @Test
-    void test() throws Exception {
+    void test() {
         Assertions.assertNotNull(client);
 
         Assertions.assertEquals(
