@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @ExtendWith(Lambda.class)
 class AWSLambdaAsyncInjectionTest {
     @AWSClient(
-        endpoint = AWSLambdaInjectionTest.Endpoint.class
+        endpoint = Endpoint.class
     )
     private AWSLambdaAsync client;
 

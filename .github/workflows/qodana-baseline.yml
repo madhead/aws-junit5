@@ -1,0 +1,23 @@
+name: Qodana baseline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  qodana-baseline:
+    name: Qodana baseline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: JetBrains/qodana-action@v4.2.2
+        with:
+          upload-result: false
+          baseline-path: qodana.sarif.json
+      - run: |
+          cp ${{ runner.temp }}/qodana/results/qodana.sarif.json qodana.sarif.json
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Qodana baseline
+          file_pattern: qodana.sarif.json

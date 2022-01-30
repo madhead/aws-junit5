@@ -130,8 +130,8 @@ configure(
 tasks {
     register<Javadoc>("javadocs") {
         group = "Documentation"
-        destinationDir = file("$buildDir/docs/javadoc")
         title = project.name
+        setDestinationDir(file("$buildDir/docs/javadoc"))
         with(options as StandardJavadocDocletOptions) {
             links = listOf(
                 "https://docs.oracle.com/javase/8/docs/api/",
