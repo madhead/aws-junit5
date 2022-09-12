@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @ExtendWith(Lambda.class)
 class LambdaAsyncClientInjectionTest {
     @AWSClient(
-        endpoint = LambdaClientInjectionTest.Endpoint.class
+        endpoint = Endpoint.class
     )
     private LambdaAsyncClient client;
 

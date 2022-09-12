@@ -1,0 +1,7 @@
+profile:
+  name: aws-junit5
+failThreshold: 1
+exclude:
+  - name: All
+    paths:
+      - qodana.sarif.json

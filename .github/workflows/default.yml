@@ -10,7 +10,7 @@ jobs:
     name: Check Gradle version
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2
 
       - uses: madhead/check-gradle-version@v1
     continue-on-error: true
@@ -19,7 +19,7 @@ jobs:
     name: Check copyright date
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2
 
       - run: |
           copyright_year=$(sed -n 's/Copyright Ⓒ \([[:digit:]]\{4\}\) madhead <siarhei.krukau@gmail.com>/\1/p' LICENSE)
@@ -27,6 +27,45 @@ jobs:
           echo $copyright_year
           echo $current_year
           [[ $copyright_year == $current_year ]]
+    continue-on-error: true
+
+  qodana-license-audit:
+    name: Qodana license audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: JetBrains/qodana-license-audit-action@v2.0-eap
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          retention-days: 1
+          name: qodana-license-audit
+          path: ${{ github.workspace }}/qodana
+    continue-on-error: true
+
+  qodana-scan:
+    name: Qodana scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: JetBrains/qodana-action@v4.2.2
+        with:
+          upload-result: false
+          baseline-path: qodana.sarif.json
+
+      - uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          retention-days: 1
+          name: qodana-scan
+          path: ${{ runner.temp }}/qodana/results
     continue-on-error: true
 
   unit-test:

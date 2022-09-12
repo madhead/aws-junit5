@@ -88,71 +88,85 @@ Specify the dependencies you need as usual:
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>dynamo-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>dynamo-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>s3-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>s3-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>kinesis-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>kinesis-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>sns-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>sns-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>sqs-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>sqs-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>ses-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>ses-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>lambda-v1</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>me.madhead.aws-junit5</groupId>
         <artifactId>lambda-v2</artifactId>
         <version>{revnumber}</version>
+        <scope>test</scope>
     </dependency>
 </dependencies>
 ----
